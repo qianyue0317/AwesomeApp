@@ -1,0 +1,148 @@
+本项目是一个基于MVP架构的开源项目
+功能的描述:
+    初步打算包含内涵段子功能,音乐播放功能,视频播放功能,支付功能,地图功能,以及聊天功能,兴趣等;
+    文件的上传和下载.换肤,做好适配的问题
+    模块暂定四个模块(即底部导航):逗你一笑,悦你一耳,亮你一眼,...
+    内涵段子接口采用糗事百科接口,音乐和视频待定.项目采用用户模式,登录和随便看看两种状态
+    主页采用左侧抽屉布局,几个模块应该怎么设置导航(是底部导航还是顶部导航?)
+    还有数据缓存的问题
+    实现电子书,画廊
+    Gif动画播放
+
+技术的运用:
+    本项目重点把界面做的漂亮,使用RemoteView,使用进程通信,尽量使用各种效果,其中5.0的共享元素要用上
+    ,滑动条目一律用RecyclerView
+    注意每个页面需要解决EditText的焦点问题,自动弹出键盘
+    当Activity或者Fragment结束或者暂停之后应该结束请求线程
+    开发中注意使用单元测试,注意使用手势监听,ViewDragHelper,注意使用wifi,数据网络接口,还有蓝牙,摄像头,以及语音
+    api,usb数据交换,定位,短信拦截,电话监听.流量统计.
+    注意使用位运算符
+    登录采用进程通信的验证
+    注意使用设计模式,单例模式使用静态内部类方式
+    最好涉及到插件化(热修复),混合开发,h5和原生交互开发
+    页面的效果采用Yalantis的效果
+    混淆打包,加固加密
+    考虑6.0的权限及其他特性问题
+
+项目结构:
+    animate:动画相关工具类.
+    base包:相关基类,如BaseActivity,BaseFragment等,对通用操作进行一定的封装,减少重复代码;
+    ui包:存放相关自定义控件,自定义风格的ProgressDialog,自定义风格的titlebar等 ;
+    utils:相关工具类,如网络请求,时间处理等;
+    global:全局相关的类,例Application
+    constants:常量类
+
+用到的第三方SDK:
+    视频框架:JieCaoVideoPlayer,Vitamio,VideoPlayerManager(视频列表)
+    音频框架:android-UniversalMusicPlayer,WaveInApp,RxAndroidAudio,ExoMedia,MusicBobber
+    usb:usb-serial-for-android,
+    监听网络状态:NetworkEvents
+    工具包:android-common
+    网络请求框架:Fast-Android-Networking
+    动画库:BaseAnimation
+    地图:百度地图,高德地图
+    支付:ping++,支付宝,微信支付
+    蓝牙:android-lite-bluetoothLE
+    即时通讯:
+    图片加载:UniversalImageLoader,Fresco,Glide,Picasso
+    缓存:ASimpleCache,AndroidVideoCache,GreenDao,OrmLite
+
+    控件:PhotoView(照片)SwipeBackLayout,ShortcutBadger(桌面图标消息提醒),Android-Bootstrap,
+    日期android-times-square,ToggleButton,cropper(裁剪图片),AndroidTagGroup(多选流式布局)
+    ,Carbon(阴影效果等),FoldableLayout(折叠效果),android-circlebutton(动画效果的圆形button)
+    ,NineGridImageView(九宫格图片),WheelPicker(滚动选择)
+    Fancybuttons(各种按钮),AndroidAudioRecorder,AppIntro(导航页),BlurredGridMenu(模糊)
+    3dTagCloudAndroid(3d动态标签) LoopRotarySwitch(旋转木马效果),Android-StickyNavLayout(粘性头部)
+    Android-CircleMenu(圆形旋转按钮)BottomBar  MetaballLoading,datetimepicker(时间选择器)
+    DatePicker(日期选择) AndroidSwipeLayout(侧滑控件)  AndroidViewHover
+    circular-progress-button(加载button)  Depth-LIB-Android-(炫酷)  RoundedImageView
+    MusicPlayerView BigImageViewer(大图预览) MPAndroidChart(表格) Android-PickerView(时间选择)
+    SwipeMenuListView(侧滑删除) StepView(步骤)    XRecyclerView   UnderLineLinearLayout(时间轴)
+    android-flip(翻页,有点旧了)
+        贝塞尔相关:ToggleDrawable    BezierLoadingView
+
+        主页导航切换:ViewPagerIndicator
+
+
+    加载进度动画:LoadingDrawable   ProgressWheel CircleProgress   AndroidFillableLoaders
+    UltimateRecyclerView    Android-SpinKit LoadingView WaveSwipeRefreshLayout
+     AVLoadingIndicatorView
+
+    插件化框架:DroidPlugin(360) *tinker*(腾讯) AndFix(热修复,阿里) 热修复:RocooFix dexposed
+    语音识别:api-ai-android-sdk
+    动画:Material-Animations(Activity的切换),recyclerview-animators(RecyclerView动画)RecyclerViewItemAnimators animate
+    AndroidViewAnimations  LikeAnimation(点赞,收藏)  AnimatedCircleLoadingView(加载)
+    FragmentAnimations(切换效果),Android-ConvenientBanner(轮播图) XCL-Charts(表格)
+    StereoView(3d旋转容器),TransitionHelper(共享元素帮助类)    FlipAnimation(翻页动画)
+    MarqueeView(垂直跑马灯)  BookReader(小说阅读器)   ImmortalZ(各种效果)
+    腾讯随身调试:GT
+    log日志框架:logger
+    listView Recyclerview的适配器:base-adapter(hongyang)
+    教程引导库:Highlight(高亮区域引导)
+    屏幕适配框架:android-percent-support-lib-sample,  AndroidAutoLayout(hongyang)android-percent-support-extend(hongyang)
+    换肤:ChangeSkin AndroidChangeSkin(hongyang)
+    开发工具包:AndroidUtilCode
+    多线程下载:MultiThreadDownloader
+
+使用框架:
+    android架构:Awesome-Android-Architecture
+    注入框架:ButterKnife
+    网络请求:Retrofit
+    数据库框架:GreenDao
+    图片加载框架:Fresco
+    屏幕适配框架:使用hongyang的框架
+    MVP库:mosby
+    注意项目中需要对这些框架进行二次封装
+
+命名规范:
+    包名:驼峰式,首字母小写,尽量见名知义,例如:presenterImpl;
+    类名:驼峰式,首字母大写,见名知义,采取 功能+组件名称 的形式 ,例如 LoginActivity(登录+活动);
+    变量名:
+        静态常量:全部大写,见名知义,单词间用"_"分隔,例:LOGIN_URL;
+        实例变量:驼峰式,首字母为"m",后接 功能+类型名(缩写) 例:mLoginBtn;
+        本地变量:驼峰式, 见名知义即可;
+    xml布局文件:全部小写,采用 组件名+功能(或者缩写) 中间用"_"连接,例:activity_login;
+    xml其他文件(动画,selector):同xml布局文件命名方式;
+    xml中的id:全部小写,采用 类型名+功能(或者缩写) 中间用"_"连接,例:btn_login;
+
+资源管理:
+    颜色:一律采用在color文件中定义的;
+    尺寸:通用的尺寸在values中定义;
+    字符串:通用的字符串要在strings文件中定义;
+
+
+
+控件(页面)风格:
+    整体采用Design包中的控件
+    统一Dialog风格,与主题颜色类似
+
+
+代码风格:
+    统一Log形式,自定义Log,tag为"J4U"
+    注意xml布局的复用,对用常用的布局结构可抽取出来通过include进行添加
+    一定注意Style的抽取
+    Fragment初始化控件的选择
+    以及监听器设置的的风格,控件少于五个统一使用
+    obj.setOnClickListener(new OnClickListener(){
+        public void onClick(View view){
+            // 此处写方法调用
+            login();
+        }
+    });
+    多于五个则使用
+    obj.setOnClickListener(this);的风格
+    通用控件最好封装,便于修改
+
+需要解决的问题:
+    权限问题;
+    第三方SDk的选用;
+    统一管理Activity;
+
+崩溃处理:
+    使用CrashHandler进行一个友好提示
+    集成一个第三方bug
+
+写代码是业务逻辑要理清楚,清晰的条理
+
+搭建框架一个很重要的问题就是如何处理好各部分模块以及类 对象之间的依赖关系
+项目需要一步步开发,首先从逗你一笑入手,从简单开始

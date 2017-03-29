@@ -1,0 +1,16 @@
+main-
+    -app    按模块划分项目主体部分,模块中包含M V P 其中V P用契约接口关联
+    -animate    动画工具包
+    -base   各种基类的包
+        -BaseActivity 所有Activity的基类
+        -BaseFragment 所有Fragment的基类
+        -ForUAdapter  通用适配器类
+    -ui 自定义控件包
+    -utils  工具包
+        -DateUtil   日期工具类
+        -TimeUtil   时间工具类
+        -HttpHelper  网络请求封装类(注意网络请求做网络检查)
+        -DbManager   数据库操作管理类
+    -constants  常量包
+        -HttpUrlConstants   数据接口包(其采用静态内部类的形式进行模块的划分)
+        -TransferKeys   传递数据时的用的Key例如 intent.putExtra(TransferKeys.Login.NAME,"just4u")
