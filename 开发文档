@@ -23,6 +23,7 @@
     页面的效果采用Yalantis的效果
     混淆打包,加固加密
     考虑6.0的权限及其他特性问题
+    集成bugly热修复
 
 项目结构:
     animate:动画相关工具类.
@@ -41,7 +42,7 @@
     网络请求框架:Fast-Android-Networking
     动画库:BaseAnimation
     地图:百度地图,高德地图
-    支付:ping++,支付宝,微信支付
+    支付:ping++(收费的),支付宝,微信支付
     蓝牙:android-lite-bluetoothLE
     即时通讯:
     图片加载:UniversalImageLoader,Fresco,Glide,Picasso
@@ -87,7 +88,7 @@
 使用框架:
     android架构:Awesome-Android-Architecture
     注入框架:ButterKnife
-    网络请求:Retrofit
+    网络请求:Retrofit + RxJava
     数据库框架:GreenDao
     图片加载框架:Fresco
     屏幕适配框架:使用hongyang的框架
