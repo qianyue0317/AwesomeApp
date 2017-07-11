@@ -1,7 +1,8 @@
 package com.qy.j4u.app.joke;
 
-import com.qy.just4u.base.BasePresenter;
-import com.qy.just4u.base.BaseView;
+
+import com.qy.j4u.base.BasePresenter;
+import com.qy.j4u.base.BaseView;
 
 /**
  * 内涵段子的契约类

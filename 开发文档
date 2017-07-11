@@ -69,7 +69,7 @@
     UltimateRecyclerView    Android-SpinKit LoadingView WaveSwipeRefreshLayout
      AVLoadingIndicatorView
 
-    插件化框架:DroidPlugin(360) *tinker*(腾讯) AndFix(热修复,阿里) 热修复:RocooFix dexposed
+    插件化框架:DroidPlugin(360) *tinker*(腾讯) AndFix(热修复,阿里) 热修复:RocooFix dexposed    nuwa2(大众点评热修复框架)
     语音识别:api-ai-android-sdk
     动画:Material-Animations(Activity的切换),recyclerview-animators(RecyclerView动画)RecyclerViewItemAnimators animate
     AndroidViewAnimations  LikeAnimation(点赞,收藏)  AnimatedCircleLoadingView(加载)

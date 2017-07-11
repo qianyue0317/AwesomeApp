@@ -1,4 +1,4 @@
-package com.qy.j4u.constants;
+package com.qy.j4u.global.constants;
 
 /**
  * 存放传值时的Key,通过内部类进行模块的划分

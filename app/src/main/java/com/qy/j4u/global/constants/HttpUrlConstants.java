@@ -1,4 +1,4 @@
-package com.qy.j4u.constants;
+package com.qy.j4u.global.constants;
 
 /**
  * 存放Url常量的类
