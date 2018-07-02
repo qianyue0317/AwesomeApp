@@ -2,10 +2,11 @@ package com.qy.j4u.app.main;
 
 import android.os.Bundle;
 
-import com.qy.just4u.R;
-import com.qy.just4u.base.BaseActivity;
+import com.qy.j4u.R;
+import com.qy.j4u.base.BaseActivity;
 
-public class MainActivity extends BaseActivity  {
+
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,16 +1,12 @@
 package com.qy.j4u.app.main;
 
-import android.app.Service;
 import android.os.Bundle;
 import android.os.MessageQueue;
 import android.support.annotation.Nullable;
 
-
-import com.qy.just4u.R;
-import com.qy.just4u.base.BaseActivity;
-import com.qy.just4u.ui.EmptyCtrlEditText;
-
-import butterknife.BindView;
+import com.qy.j4u.R;
+import com.qy.j4u.base.BaseActivity;
+import com.qy.j4u.ui.EmptyCtrlEditText;
 
 
 /**
