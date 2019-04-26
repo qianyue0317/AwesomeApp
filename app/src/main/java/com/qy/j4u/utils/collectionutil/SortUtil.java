@@ -1,7 +1,7 @@
 package com.qy.j4u.utils.collectionutil;
 
 
-import com.qy.j4u.utils.LoLog;
+import com.qy.j4u.utils.JLog;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
@@ -40,10 +40,10 @@ public class SortUtil {
                     return lhsV.compareTo(rhsV);
                 } catch (NoSuchFieldException e) {
 //                    e.printStackTrace();
-                    LoLog.d("排序方法:没有此Field");
+                    JLog.d("排序方法:没有此Field");
                 } catch (IllegalAccessException e) {
 //                    e.printStackTrace();
-                    LoLog.d("非法的访问权限");
+                    JLog.d("非法的访问权限");
                 }
                 return 0;
             }

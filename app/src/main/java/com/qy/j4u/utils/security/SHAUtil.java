@@ -1,6 +1,7 @@
 package com.qy.j4u.utils.security;
 
-import com.qy.just4u.utils.JLog;
+
+import com.qy.j4u.utils.JLog;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
