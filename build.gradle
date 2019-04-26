@@ -23,6 +23,9 @@ allprojects {
         mavenCentral()
         maven { url "https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository" }
         maven { url 'https://jitpack.io'}
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/releases"
+        }
     }
 }
 

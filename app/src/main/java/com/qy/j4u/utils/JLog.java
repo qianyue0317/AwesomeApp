@@ -38,6 +38,12 @@ public class JLog {
         }
     }
 
+    public static void i(Object object) {
+        if (Constant.LOG) {
+            Logger.i(String.valueOf(object));
+        }
+    }
+
     public static void v(String content) {
         if (Constant.LOG) {
             Logger.v(content);
