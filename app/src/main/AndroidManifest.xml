@@ -145,6 +145,7 @@
             android:enabled="true"
             android:exported="false">
         </service>
+        <service android:name=".services.CoreService"/>
 
         <!-- Required SDK 核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>

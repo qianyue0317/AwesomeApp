@@ -12,7 +12,16 @@
     tools:context="com.qy.j4u.MainActivity">
 
     <TextView
+        android:id="@+id/tv_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
+
+
+    <Button
+        android:id="@+id/btn"
+        android:text="点一下试试"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>
