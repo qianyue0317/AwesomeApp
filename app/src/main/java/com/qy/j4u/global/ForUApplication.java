@@ -2,6 +2,7 @@ package com.qy.j4u.global;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.support.multidex.MultiDex;
 
 import com.qy.j4u.pojo.DaoMaster;
@@ -34,8 +35,12 @@ public class ForUApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        startCoreService();
         initJPush();
         initGreenDao();
+    }
+
+    private void startCoreService() {
     }
 
     private void initGreenDao() {

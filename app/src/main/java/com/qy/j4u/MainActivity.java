@@ -1,10 +1,14 @@
 package com.qy.j4u;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.pojo.DaoSession;
 import com.qy.j4u.pojo.GreenDaoTestPojo;
+import com.qy.j4u.services.RemoteCoreService;
 import com.qy.j4u.utils.JLog;
 
 import java.util.Date;
@@ -20,7 +25,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ScreenStatusBroadCastReceiver mScreenStatusBroadCastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +48,29 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.tv_hello)).setText("变了");
             }
         });
-        mScreenStatusBroadCastReceiver = new ScreenStatusBroadCastReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_SCREEN_ON);
-        filter.addAction(Intent.ACTION_SCREEN_OFF);
-        registerReceiver(mScreenStatusBroadCastReceiver, filter);
+
+
+        bindService(new Intent(this, RemoteCoreService.class), new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                CoreBinder coreBinder = CoreBinder.Stub.asInterface(service);
+                try {
+                    JLog.d(coreBinder.getContent());
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        }, BIND_AUTO_CREATE);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mScreenStatusBroadCastReceiver);
     }
 
     @Override
@@ -66,12 +82,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    static class ScreenStatusBroadCastReceiver extends BroadcastReceiver {
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            JLog.i(Intent.ACTION_SCREEN_OFF.equals(intent.getAction()) ? "屏幕暗了" : "屏幕亮了");
-        }
-    }
 
 }
