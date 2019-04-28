@@ -24,7 +24,7 @@ dependencies {
     implementation 'commons-io:commons-io:20030203.000550'
     // log依赖
     implementation 'com.orhanobut:logger:2.2.0'
-    annotationProcessor 'com.alibaba:arouter-compiler:+'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     // 阿里开源路由跳转
     implementation 'com.alibaba:arouter-api:1.4.0'
     // 阿里开源路由跳转
