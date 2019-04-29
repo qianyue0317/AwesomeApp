@@ -1,9 +1,26 @@
-project('app') { Project project->
+println "根工程的绝对路径:${getRootDir().absolutePath}"
+project('app') { Project project ->
 
-    println "build目录:$project.buildDir"
-    File buildFile = new File(project.buildDir.absolutePath)
     project.copy {
-        from(buildFile.absolutePath)
-        into("E:/test")
+        from file('build/outputs/apk/')
+        into project.projectDir.path + '/apk/'
     }
+
+//    def apkDir = file(project.projectDir.path + '/apk')
+//    apkDir
 }
+
+println getContent('copyApk.gradle')
+
+def getContent(String path) {
+    try {
+        def file = file(path)
+        return file.text
+    } catch (GradleException e) {
+        e.printStackTrace()
+    }
+    return null
+}
+
+
+
