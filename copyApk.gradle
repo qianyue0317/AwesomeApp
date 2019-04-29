@@ -1,0 +1,9 @@
+project('app') { Project project->
+
+    println "build目录:$project.buildDir"
+    File buildFile = new File(project.buildDir.absolutePath)
+    project.copy {
+        from(buildFile.absolutePath)
+        into("E:/test")
+    }
+}
