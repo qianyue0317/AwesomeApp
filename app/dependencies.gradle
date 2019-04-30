@@ -3,18 +3,21 @@ configurations.all {
 }
 
 dependencies {
+//    implementation 'com.android.support:multidex:1.0.3'
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'com.android.support:design:28.0.0'
+//    implementation 'com.android.support:cardview-v7:28.0.0'
+//    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    // 以上support包依赖全部迁移到androidx
+
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:10.1.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.facebook.fresco:fresco:0.14.1'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
