@@ -2,7 +2,7 @@ package com.hyphenate.easeui.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ListView;

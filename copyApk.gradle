@@ -1,25 +1,28 @@
 println "根工程的绝对路径:${getRootDir().absolutePath}"
 project('app') { Project project ->
 
-    project.copy {
-        from file('build/outputs/apk/')
-        into project.projectDir.path + '/apk/'
+//    SimpleDateFormat sdf = SimpleDateFormat.getDateInstance()
+//    sdf.applyPattern("yyyyMMddHHmmss")
+//
+//    project.copy {
+//        from file('build/outputs/apk/debug/app-release.apk')
+//        into project.projectDir.path + '/apk/'
+//        rename {
+//            sdf.format(new Date(file('build/outputs/apk/debug/app-debug.apk').lastModified()))+'.apk'
+//        }
+//    }
+    def tasks = project.getAllTasks(false)
+    tasks.each {it1,it2->
+        println "$it1"
+        println "$it2"
     }
 
-//    def apkDir = file(project.projectDir.path + '/apk')
-//    apkDir
 }
 
-println getContent('copyApk.gradle')
-
-def getContent(String path) {
-    try {
-        def file = file(path)
-        return file.text
-    } catch (GradleException e) {
-        e.printStackTrace()
+task copyAPK{
+    doLast {
+        println "copyAPK"
     }
-    return null
 }
 
 

@@ -6,11 +6,11 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.pojo.DaoSession;
 import com.qy.j4u.pojo.GreenDaoTestPojo;
@@ -19,6 +19,8 @@ import com.qy.j4u.utils.JLog;
 
 import java.util.Date;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ((TextView) findViewById(R.id.tv_hello)).setText("变了");
+                ARouter.getInstance().build("/testARouter/activity")
+                        .withString("passStr","你好,ARouter")
+                        .navigation();
             }
         });
 

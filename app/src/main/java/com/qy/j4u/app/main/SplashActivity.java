@@ -2,7 +2,7 @@ package com.qy.j4u.app.main;
 
 import android.os.Bundle;
 import android.os.MessageQueue;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.qy.j4u.R;
 import com.qy.j4u.base.BaseActivity;

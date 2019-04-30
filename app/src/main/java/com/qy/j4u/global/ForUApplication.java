@@ -2,9 +2,10 @@ package com.qy.j4u.global;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.qy.j4u.global.constants.Constant;
 import com.qy.j4u.pojo.DaoMaster;
 import com.qy.j4u.pojo.DaoSession;
 
@@ -35,9 +36,18 @@ public class ForUApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        initARouter();
         startCoreService();
         initJPush();
         initGreenDao();
+    }
+
+    private void initARouter() {
+        if (Constant.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
     }
 
     private void startCoreService() {

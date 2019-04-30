@@ -1,7 +1,7 @@
 package com.qy.j4u.global;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * 全局用户信息类

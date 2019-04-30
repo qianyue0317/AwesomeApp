@@ -13,7 +13,7 @@ public class Constant {
         // ...不能实例化
     }
 
-    public static final boolean TEST = true;
+    public static final boolean DEBUG = true;
 
     public static final boolean LOG = true;
 

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
  * Created by abc on 2016/11/17.
  */
 
-public class EmptyCtrlEditText extends android.support.v7.widget.AppCompatEditText {
+public class EmptyCtrlEditText extends androidx.appcompat.widget.AppCompatEditText {
     public EmptyCtrlEditText(Context context) {
         super(context);
     }

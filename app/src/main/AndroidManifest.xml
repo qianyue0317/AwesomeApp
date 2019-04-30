@@ -51,6 +51,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".TestARouterActivity"/>
+
+
         <!--以下是极光推送需要的-->
 
         <!-- Required SDK 核心功能-->
@@ -138,6 +141,13 @@
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
         </activity>
+        <activity android:name=".HooliganActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
+                  android:excludeFromRecents="true"
+                  android:exported="false"
+                  android:finishOnTaskLaunch="false"
+                  android:launchMode="singleInstance"
+                  android:theme="@style/HooliganActivityStyle"/>
 
         <!-- Required SDK 核心功能-->
         <service
@@ -207,6 +217,8 @@
             android:name="JPUSH_APPKEY"
             android:value="0cd5ab637c38f880bce25a62"/>
         <!--以上是极光推送需要的-->
+
+
 
     </application>
 
