@@ -4,14 +4,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion myCompileSdkVersion
+    buildToolsVersion myBuildToolsVersion
     defaultConfig {
         applicationId "com.qy.j4u"
-        minSdkVersion 17
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion myMinSdkVersion
+        targetSdkVersion myTargetSdkVersion
+        versionCode myVersionCode
+        versionName myVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
@@ -30,6 +30,13 @@ android {
             }
         }
     }
+
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res'/*,'src/main/res-layout'*/]
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

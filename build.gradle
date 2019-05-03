@@ -35,3 +35,4 @@ task clean(type: Delete) {
 }
 
 apply from:'copyApk.gradle'
+apply from:'constants.gradle'
