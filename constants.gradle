@@ -1,12 +1,14 @@
 project('app').ext {
-    myCompileSdkVersion = 28
-    myBuildToolsVersion = '28.0.3'
-    myMinSdkVersion = 17
-    myTargetSdkVersion = 28
-}
-
-// 应用相关的配置
-project('app').ext {
-    myVersionCode = 1
-    myVersionName = '1.0.0'
+    // 构建相关配置
+    androidBuild = [
+            myCompileSdkVersion: 28,
+            myBuildToolsVersion: '28.0.3',
+            myMinSdkVersion    : 17,
+            myTargetSdkVersion : 28
+    ]
+    // 应用相关配置
+    appConfig = [
+            myVersionCode: 1,
+            myVersionName: '1.0.0'
+    ]
 }

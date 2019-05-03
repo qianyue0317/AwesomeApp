@@ -1,1 +1,1 @@
-include ':app', ':easeui', ':buildSrc'
+include ':app', ':easeui', ':buildSrc', ':annotationLib'

@@ -14,6 +14,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' //添加该依赖
     }
 }
 
@@ -27,6 +28,7 @@ allprojects {
         maven {
             url "http://maven.aliyun.com/nexus/content/repositories/releases"
         }
+        mavenCentral()
     }
 }
 

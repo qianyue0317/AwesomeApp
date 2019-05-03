@@ -9,7 +9,8 @@ dependencies {
 //    implementation 'com.android.support:cardview-v7:28.0.0'
 //    implementation 'com.android.support:recyclerview-v7:28.0.0'
     // 以上support包依赖全部迁移到androidx
-
+    implementation project(path: ':annotationLib')
+    annotationProcessor project(path: ':annotationLib')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
@@ -53,4 +54,9 @@ dependencies {
     //dagger 依赖
     implementation 'com.google.dagger:dagger:2.22.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
+
+    implementation 'com.google.android:flexbox:1.1.0'
+    // 动画库
+    implementation 'com.airbnb.android:lottie:3.0.1'
+
 }

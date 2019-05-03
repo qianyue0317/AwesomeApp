@@ -5,14 +5,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'com.qianyue.plugin'
 android {
-    compileSdkVersion myCompileSdkVersion
-    buildToolsVersion myBuildToolsVersion
+    compileSdkVersion androidBuild['myCompileSdkVersion']
+    buildToolsVersion androidBuild['myBuildToolsVersion']
     defaultConfig {
         applicationId "com.qy.j4u"
-        minSdkVersion myMinSdkVersion
-        targetSdkVersion myTargetSdkVersion
-        versionCode myVersionCode
-        versionName myVersionName
+        minSdkVersion androidBuild['myMinSdkVersion']
+        targetSdkVersion androidBuild['myTargetSdkVersion']
+        versionCode appConfig['myVersionCode']
+        versionName appConfig['myVersionName']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
@@ -53,6 +53,3 @@ android {
 
 
 apply from: 'dependencies.gradle'
-repositories {
-    mavenCentral()
-}
