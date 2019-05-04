@@ -7,4 +7,11 @@ public class TestMyAnnotation {
 
     String content;
 
+    public native String  getContent();
+
+
+    static {
+        System.loadLibrary("native-lib");
+    }
+
 }

@@ -35,7 +35,7 @@ public class J4UAnnotationProcessor extends AbstractProcessor {
                         "class");
             }
             /*生成方法*/
-            MethodSpec creaedMethod = MethodSpec.methodBuilder("createApt")
+            MethodSpec createdMethod = MethodSpec.methodBuilder("createApt")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(void.class)
                     .addParameter(String[].class, "parameters")
@@ -46,7 +46,7 @@ public class J4UAnnotationProcessor extends AbstractProcessor {
 
             TypeSpec createdClass =
                     TypeSpec.classBuilder("AptGenerator").addModifiers(Modifier.PUBLIC,
-                            Modifier.FINAL).addMethod(creaedMethod).build();//指定生成的类
+                            Modifier.FINAL).addMethod(createdMethod).build();//指定生成的类
             JavaFile javaFile = JavaFile.builder("com.qy.j4u", createdClass).build();
 
             try {

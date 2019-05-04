@@ -8,8 +8,5 @@ package com.qy.j4u.app.joke;
 
 public class GetJokesPresenterImpl implements GetJokeContract.Presenter {
 
-    @Override
-    public void start() {
 
-    }
 }

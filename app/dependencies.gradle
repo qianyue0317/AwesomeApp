@@ -58,5 +58,11 @@ dependencies {
     implementation 'com.google.android:flexbox:1.1.0'
     // 动画库
     implementation 'com.airbnb.android:lottie:3.0.1'
-
+    // 工具库
+    implementation 'com.blankj:utilcodex:1.23.7'
+    // 权限工具
+    implementation "org.permissionsdispatcher:permissionsdispatcher:4.3.1"
+    annotationProcessor "org.permissionsdispatcher:permissionsdispatcher-processor:4.3.1"
+    // 腾讯的ui库
+    implementation 'com.qmuiteam:qmui:1.2.0'
 }

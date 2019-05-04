@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((TextView) findViewById(R.id.tv_hello)).setText("变了");
-                ARouter.getInstance().build("/testARouter/activity")
-                        .withString("passStr","你好,ARouter")
-                        .navigation();
+                ((TextView) findViewById(R.id.tv_hello)).setText(new TestMyAnnotation().getContent());
+//                ARouter.getInstance().build("/testARouter/activity")
+//                        .withString("passStr","你好,ARouter")
+//                        .navigation();
             }
         });
 

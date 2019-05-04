@@ -15,9 +15,14 @@ android {
         versionName appConfig['myVersionName']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
         ndk {
             //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86', 'x86_64', 'mips', 'mips64'
+            abiFilters  'armeabi-v7a', 'arm64-v8a','x86', 'x86_64'//不支持 'mips', 'mips64','armeabi'
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
@@ -46,6 +51,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
         }
     }
     useLibrary 'org.apache.http.legacy'

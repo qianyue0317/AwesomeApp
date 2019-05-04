@@ -79,20 +79,17 @@
     腾讯随身调试:GT
     log日志框架:logger
     listView Recyclerview的适配器:base-adapter(hongyang)
-    教程引导库:Highlight(高亮区域引导)
     屏幕适配框架:android-percent-support-lib-sample,  AndroidAutoLayout(hongyang)android-percent-support-extend(hongyang)
     换肤:ChangeSkin AndroidChangeSkin(hongyang)
     开发工具包:AndroidUtilCode
     多线程下载:MultiThreadDownloader
 
 使用框架:
-    android架构:Awesome-Android-Architecture
     注入框架:ButterKnife
     网络请求:Retrofit + RxJava
     数据库框架:GreenDao
     图片加载框架:Fresco
     屏幕适配框架:使用hongyang的框架
-    MVP库:mosby
     注意项目中需要对这些框架进行二次封装
 
 命名规范:
@@ -136,17 +133,10 @@
 
 需要解决的问题:
     权限问题;
-    第三方SDk的选用;
     统一管理Activity;
 
 崩溃处理:
-    使用CrashHandler进行一个友好提示
-    集成一个第三方bug
+    bugly
 
 写代码是业务逻辑要理清楚,清晰的条理
 
-搭建框架一个很重要的问题就是如何处理好各部分模块以及类 对象之间的依赖关系
-项目需要一步步开发,首先从逗你一笑入手,从简单开始
-
-jni java kotlin 混合开发
-启动优化
