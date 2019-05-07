@@ -66,4 +66,8 @@ dependencies {
     // 腾讯的ui库
     implementation 'com.qmuiteam:qmui:1.2.0'
     implementation 'com.github.GrenderG:Toasty:1.4.2'
+    // 弹窗库
+    implementation 'com.lxj:xpopup:1.7.3-x'
+    // 局域网通信 coap
+    implementation 'org.eclipse.californium:californium-core:1.0.7'
 }

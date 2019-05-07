@@ -2,7 +2,6 @@ package com.qy.j4u.global;
 
 import android.app.Application;
 import android.content.Context;
-import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.qy.j4u.global.constants.Constant;
@@ -11,6 +10,7 @@ import com.qy.j4u.pojo.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
 
+import androidx.multidex.MultiDex;
 import cn.jpush.android.api.JPushInterface;
 
 /**
