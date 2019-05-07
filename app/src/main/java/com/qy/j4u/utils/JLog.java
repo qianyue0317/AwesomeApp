@@ -23,8 +23,7 @@ public class JLog {
     static {
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)
-                .methodCount(0)
-                .methodOffset(7)
+                .methodCount(2)
                 .tag(TAG)
                 .build();
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));

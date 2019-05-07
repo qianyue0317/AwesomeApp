@@ -10,26 +10,35 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.qy.j4u.eventmessages.RaspberryIp;
 import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.pojo.DaoSession;
 import com.qy.j4u.pojo.GreenDaoTestPojo;
 import com.qy.j4u.services.RemoteCoreService;
 import com.qy.j4u.utils.JLog;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.Date;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.tv_raspberry_ip)
+    TextView mTvIp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
 
         if((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
             JLog.d("MainActivity","onCreate intent flag FLAG_ACTIVITY_BROUGHT_TO_FRONT");
@@ -77,9 +86,15 @@ public class MainActivity extends AppCompatActivity {
         }, BIND_AUTO_CREATE);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void onRaspIp(RaspberryIp raspberryIp) {
+        mTvIp.setText(raspberryIp.getIp());
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
