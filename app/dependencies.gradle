@@ -70,4 +70,17 @@ dependencies {
     implementation 'com.lxj:xpopup:1.7.3-x'
     // 局域网通信 coap
     implementation 'org.eclipse.californium:californium-core:1.0.7'
+
+    // 3d地图
+    implementation 'com.amap.api:3dmap:latest.integration'
+    //2D地图
+    implementation 'com.amap.api:map2d:latest.integration'
+    //导航
+    implementation 'com.amap.api:navi-3dmap:latest.integration'
+    //搜索
+    implementation 'com.amap.api:search:latest.integration'
+    //定位
+    implementation 'com.amap.api:location:latest.integration'
+    // adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
 }
