@@ -29,6 +29,7 @@ allprojects {
             url "http://maven.aliyun.com/nexus/content/repositories/releases"
         }
         mavenCentral()
+        maven { url "https://maven.google.com" }
     }
 }
 

@@ -16,30 +16,30 @@ import com.qy.j4u.ui.EmptyCtrlEditText;
 
 public class SplashActivity extends BaseActivity implements SplashView {
 
-    EmptyCtrlEditText mEt;
-    private MessageQueue mQueue;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-    }
-
-    @Override
-    protected void initVariable() {
-
-    }
-
-    @Override
-    protected void initView() {
-
-    }
-
-
-
-    @Override
-    protected void initListener() {
-
-    }
+//    EmptyCtrlEditText mEt;
+//    private MessageQueue mQueue;
+//
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_splash);
+//    }
+//
+//    @Override
+//    protected void initVariable() {
+//
+//    }
+//
+//    @Override
+//    protected void initView() {
+//
+//    }
+//
+//
+//
+//    @Override
+//    protected void initListener() {
+//
+//    }
 
 }
