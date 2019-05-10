@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.qy.j4u.MainActivity">
+    tools:context="com.qy.j4u.app.main.MainActivity">
 
     <TextView
         android:id="@+id/tv_hello"

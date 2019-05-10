@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.qy.j4u"
           xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+          xmlns:tools="http://schemas.android.com/tools"
+          tools:ignore="MissingLeanbackLauncher">
 
     <permission
         android:name="com.qy.j4u.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature"/>
-    <uses-permission android:name="com.qy.j4u.permission.JPUSH_MESSAGE"/>
-    <!-- Required -->
+
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false"/>
+
+    <uses-permission android:name="com.qy.j4u.permission.JPUSH_MESSAGE"/> <!-- Required -->
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
@@ -27,22 +44,23 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-
-    <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/> <!-- 用于开启 debug 版本的应用在 6.0 系统上的层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
 
     <application
-        android:allowBackup="true"
+        android:name=".global.ForUApplication"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".global.ForUApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:theme="@style/SplashTheme"
+            android:name=".app.main.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -50,36 +68,40 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".TestARouterActivity"/>
-
-
-        <!--以下是极光推送需要的-->
-
-        <!-- Required SDK 核心功能-->
+        <activity
+            android:name=".app.main.HooliganActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:finishOnTaskLaunch="false"
+            android:launchMode="singleInstance"
+            android:theme="@style/HooliganActivityStyle"/>
+        <activity android:name=".app.main.MainActivity"
+            android:screenOrientation="portrait"/>
+        <!-- 以下是极光推送需要的 -->
+        <!-- Required SDK 核心功能 -->
         <!-- 可配置 android:process 参数将 PushService 放在其他进程中 -->
-        <!--<service-->
-            <!--android:name="cn.jpush.android.service.PushService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false"-->
-            <!--android:process=":remote">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="cn.jpush.android.intent.REGISTER"/>-->
-                <!--<action android:name="cn.jpush.android.intent.REPORT"/>-->
-                <!--<action android:name="cn.jpush.android.intent.PushService"/>-->
-                <!--<action android:name="cn.jpush.android.intent.PUSH_TIME"/>-->
-            <!--</intent-filter>-->
-        <!--</service>-->
-        <!--<provider-->
-            <!--android:name="cn.jpush.android.service.DataProvider"-->
-            <!--android:authorities="com.qy.j4u.DataProvider"-->
-            <!--android:exported="true"-->
-            <!--/>-->
-
-
+        <!-- <service -->
+        <!-- android:name="cn.jpush.android.service.PushService" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="false" -->
+        <!-- android:process=":remote"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="cn.jpush.android.intent.REGISTER"/> -->
+        <!-- <action android:name="cn.jpush.android.intent.REPORT"/> -->
+        <!-- <action android:name="cn.jpush.android.intent.PushService"/> -->
+        <!-- <action android:name="cn.jpush.android.intent.PUSH_TIME"/> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- <provider -->
+        <!-- android:name="cn.jpush.android.service.DataProvider" -->
+        <!-- android:authorities="com.qy.j4u.DataProvider" -->
+        <!-- android:exported="true" -->
+        <!-- /> -->
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 JPush 服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，或把 enabled 设置成 false ；App 不会被其他 App 拉起，但会拉起其他的 App。 -->
-        <!--<service
+        <!--
+<service
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
             android:exported="true">
@@ -87,26 +109,28 @@
                 <action android:name="cn.jpush.android.intent.DaemonService" />
                 <category android:name="您应用的包名"/>
             </intent-filter>
-        </service>-->
-
-        <!-- since 3.1.0 Required SDK 核心功能-->
+        </service>
+        -->
+        <!-- since 3.1.0 Required SDK 核心功能 -->
         <provider
             android:name="cn.jpush.android.service.DownloadProvider"
             android:authorities="com.qy.j4u.DownloadProvider"
             android:exported="true"
-            />
-
-        <!-- Required SDK 核心功能-->
+            tools:ignore="ExportedContentProvider"/> <!-- Required SDK 核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true">
+            android:enabled="true"
+            tools:ignore="ExportedReceiver">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE"
+                    tools:ignore="BatteryLife"/>
             </intent-filter>
             <!-- Optional -->
             <intent-filter>
@@ -115,9 +139,7 @@
 
                 <data android:scheme="package"/>
             </intent-filter>
-        </receiver>
-
-        <!-- Required SDK 核心功能-->
+        </receiver> <!-- Required SDK 核心功能 -->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -129,8 +151,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
-        </activity>
-        <!-- SDK 核心功能-->
+        </activity> <!-- SDK 核心功能 -->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -141,28 +162,19 @@
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
         </activity>
-        <activity android:name=".HooliganActivity"
-                  android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
-                  android:excludeFromRecents="true"
-                  android:exported="false"
-                  android:finishOnTaskLaunch="false"
-                  android:launchMode="singleInstance"
-                  android:theme="@style/HooliganActivityStyle"/>
-
-        <!-- Required SDK 核心功能-->
+         <!-- Required SDK 核心功能 -->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
             android:exported="false">
         </service>
-        <service android:name=".services.RemoteCoreService" android:process="com.qy.core"/>
-        <service android:name=".services.CoreService"
-            android:exported="false"/>
-
-        <!-- Required SDK 核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>
-
-        <!-- Required since 3.0.7 -->
+        <service
+            android:name=".services.RemoteCoreService"
+            android:process="com.qy.core"/>
+        <service
+            android:name=".services.CoreService"
+            android:exported="false"/> <!-- Required SDK 核心功能 -->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver"/> <!-- Required since 3.0.7 -->
         <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
         <receiver
@@ -171,55 +183,48 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE"/>
+
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
-        </receiver>
-
-        <!-- User defined. 用户自定义的广播接收器-->
+        </receiver> <!-- User defined. 用户自定义的广播接收器 -->
         <receiver
             android:name=".receivers.J4UMessageReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <!--Required 用户注册 SDK 的 intent-->
+
+                <!-- Required 用户注册 SDK 的 intent -->
                 <action android:name="cn.jpush.android.intent.REGISTRATION"/>
-                <!--Required 用户接收 SDK 消息的 intent-->
+                <!-- Required 用户接收 SDK 消息的 intent -->
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
-                <!--Required 用户接收 SDK 通知栏信息的 intent-->
+                <!-- Required 用户接收 SDK 通知栏信息的 intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
-                <!--Required 用户打开自定义通知栏的 intent-->
+                <!-- Required 用户打开自定义通知栏的 intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                 <action android:name="cn.jpush.android.intent.CONNECTION"/>
+
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
-        </receiver>
-
-        <!-- User defined. 用户自定义 Receiver 接收被拉起回调-->
+        </receiver> <!-- User defined. 用户自定义 Receiver 接收被拉起回调 -->
         <!-- 自定义 Receiver 组件，继承cn.jpush.android.service.WakedResultReceiver类,复写onWake(int wakeType)或 onWake(Context context, int wakeType)方法以监听被拉起 -->
-        <!--<receiver android:name="xx.xx.xx.MyWakedResultReceiver">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="cn.jpush.android.intent.WakedReceiver"/>-->
-                <!--<category android:name="${applicationId}"/>-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-
+        <!-- <receiver android:name="xx.xx.xx.MyWakedResultReceiver"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="cn.jpush.android.intent.WakedReceiver"/> -->
+        <!-- <category android:name="${applicationId}"/> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
         <!-- Required. For publish channel feature -->
-        <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。 -->
         <!-- 例如: -->
         <!-- 发到 Google Play 的 APK 可以设置为 google-play; -->
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
         <meta-data
             android:name="JPUSH_CHANNEL"
-            android:value="developer-default"/>
-        <!-- Required. AppKey copied from Portal -->
+            android:value="developer-default"/> <!-- Required. AppKey copied from Portal -->
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="0cd5ab637c38f880bce25a62"/>
-        <!--以上是极光推送需要的-->
-
-
-
     </application>
 
 </manifest>

@@ -6,6 +6,9 @@ package com.qy.j4u.global.constants;
  */
 
 public class HttpUrlConstants {
+
+    public static String BASE_URL = "htt://106.12.129.87:5000/J4U";
+
     public static class LoginUrls{
         public static final String LOGIN_URL = "";
     }

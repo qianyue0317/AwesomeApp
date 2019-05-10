@@ -1,4 +1,4 @@
-package com.qy.j4u.ui;
+package com.qy.j4u.widget;
 
 import android.content.Context;
 import android.text.TextUtils;

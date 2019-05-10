@@ -12,6 +12,7 @@ import org.greenrobot.greendao.database.Database;
 
 import androidx.multidex.MultiDex;
 import cn.jpush.android.api.JPushInterface;
+import es.dmoral.toasty.Toasty;
 
 /**
  * 项目的Application类
@@ -40,6 +41,15 @@ public class ForUApplication extends Application {
         startCoreService();
         initJPush();
         initGreenDao();
+        initToasty();
+    }
+
+    private void initToasty() {
+        Toasty.Config.getInstance()
+                .tintIcon(true)
+                .setTextSize(13)
+                .allowQueue(true)
+                .apply();
     }
 
     private void initARouter() {

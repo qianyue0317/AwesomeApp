@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
     // 阿里开源路由跳转
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
     // 阿里开源路由跳转
     implementation 'com.alibaba:arouter-api:1.4.0'
     // 数据持久化相关 greendao
@@ -75,8 +76,8 @@ dependencies {
     implementation 'com.amap.api:3dmap:latest.integration'
     //2D地图
     implementation 'com.amap.api:map2d:latest.integration'
-    //导航
-    implementation 'com.amap.api:navi-3dmap:latest.integration'
+    //导航 暂时不用导航 和3d地图有冲突
+//    implementation 'com.amap.api:navi-3dmap:latest.integration'
     //搜索
     implementation 'com.amap.api:search:latest.integration'
     //定位
@@ -90,4 +91,13 @@ dependencies {
     // 底部导航
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
     implementation "com.android.support:design:28.0.0"
+    // rxbinding
+    implementation 'com.jakewharton.rxbinding3:rxbinding-core:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-appcompat:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-drawerlayout:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-leanback:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-recyclerview:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-viewpager:3.0.0-alpha2'
 }

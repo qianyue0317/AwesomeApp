@@ -1,4 +1,4 @@
-package com.qy.j4u;
+package com.qy.j4u.global;
 
 import android.content.Context;
 

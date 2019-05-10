@@ -4,6 +4,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'com.qianyue.plugin'
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg('AROUTER_MODULE_NAME', project.getName())
+        arg('AROUTER_GENERATE_DOC','enable')
+    }
+}
 android {
     compileSdkVersion androidBuild['myCompileSdkVersion']
     buildToolsVersion androidBuild['myBuildToolsVersion']
@@ -22,7 +29,7 @@ android {
         }
         ndk {
             //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters  'armeabi-v7a', 'arm64-v8a','x86', 'x86_64'//不支持 'mips', 'mips64','armeabi'
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'//不支持 'mips', 'mips64','armeabi'
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [

@@ -1,14 +1,15 @@
-package com.qy.j4u;
+package com.qy.j4u.app.main;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.qy.j4u.global.ForUApplication;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 1像素activity 用于锁屏保活
