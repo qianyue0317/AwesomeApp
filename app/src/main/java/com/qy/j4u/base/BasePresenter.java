@@ -67,9 +67,17 @@ public class BasePresenter<V extends BaseView> {
                     return null;
                 }
             }
+            cancel();
             JLog.i("view是空");
             return null;
         }
+    }
+
+    /**
+     * 取消所有异步操作, 在view为空的时候调用,非必要override
+     */
+    public void cancel() {
+
     }
 
 }
