@@ -9,14 +9,13 @@
     Gif动画播放
 
 技术的运用:
-    本项目重点把界面做的漂亮,使用RemoteView,使用进程通信,尽量使用各种效果,其中5.0的共享元素要用上
+    使用RemoteView,使用进程通信,尽量使用各种效果,其中5.0的共享元素要用上
     ,滑动条目一律用RecyclerView
     注意每个页面需要解决EditText的焦点问题,自动弹出键盘
     当Activity或者Fragment结束或者暂停之后应该结束请求线程
     开发中注意使用单元测试,注意使用手势监听,ViewDragHelper,注意使用wifi,数据网络接口,还有蓝牙,摄像头,以及语音
     api,usb数据交换,定位,短信拦截,电话监听.流量统计.
     注意使用位运算符
-    登录采用进程通信的验证
     注意使用设计模式,单例模式使用静态内部类方式
     最好涉及到插件化(热修复),混合开发,h5和原生交互开发
     页面的效果采用Yalantis的效果
@@ -120,15 +119,6 @@
     注意xml布局的复用,对用常用的布局结构可抽取出来通过include进行添加
     一定注意Style的抽取
     Fragment初始化控件的选择
-    以及监听器设置的的风格,控件少于五个统一使用
-    obj.setOnClickListener(new OnClickListener(){
-        public void onClick(View view){
-            // 此处写方法调用
-            login();
-        }
-    });
-    多于五个则使用
-    obj.setOnClickListener(this);的风格
     通用控件最好封装,便于修改
 
 需要解决的问题:
