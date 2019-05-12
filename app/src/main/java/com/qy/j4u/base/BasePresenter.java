@@ -16,15 +16,17 @@ import java.lang.reflect.Proxy;
 @SuppressWarnings("all")
 public class BasePresenter<V extends BaseView> {
 
-    WeakReference<V> mReference;
-    V mRealView;
+    private final RealViewHandler mH;
+    private WeakReference<V> mReference;
+    private V mRealView;
 
     public BasePresenter(V v) {
         mReference = new WeakReference<>(v);
         Class<?> vClass =
                 (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        mH = new RealViewHandler(v);
         mRealView = (V) Proxy.newProxyInstance(getClass().getClassLoader(), new Class<?>[]{vClass},
-                new RealViewHandler(v));
+                mH);
     }
 
     public V getView() {
@@ -42,6 +44,10 @@ public class BasePresenter<V extends BaseView> {
         if (mReference != null) {
             mReference.clear();
             mReference = null;
+        }
+        if (mH != null && mH.mTarget != null) {
+            mH.mTarget.clear();
+            mH.mTarget = null;
         }
     }
 
@@ -67,14 +73,13 @@ public class BasePresenter<V extends BaseView> {
                     return null;
                 }
             }
-            cancel();
             JLog.i("view是空");
             return null;
         }
     }
 
     /**
-     * 取消所有异步操作, 在view为空的时候调用,非必要override
+     * 取消一些异步任务
      */
     public void cancel() {
 

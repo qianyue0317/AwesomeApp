@@ -5,6 +5,7 @@ dependencies {
     // 动态生成java代码的库
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
     implementation 'com.squareup:javapoet:1.11.1'
+    implementation project(path: ':annotation_api')
 }
 
 sourceCompatibility = "7"

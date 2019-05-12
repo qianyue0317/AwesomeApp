@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.qy.j4u.R;
-import com.qy.j4u.app.main.MainActivity;
-import com.qy.j4u.app.main.SplashActivity;
+import com.qy.j4u.app.main.activities.MainActivity;
+import com.qy.j4u.app.main.activities.SplashActivity;
 import com.qy.j4u.utils.KeyboardTool;
 
 import java.util.concurrent.TimeUnit;

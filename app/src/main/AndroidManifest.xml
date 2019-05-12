@@ -56,10 +56,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        tools:replace="android:allowBackup"
         android:theme="@style/AppTheme">
         <activity
             android:theme="@style/SplashTheme"
-            android:name=".app.main.SplashActivity"
+            android:name=".app.main.activities.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -69,14 +70,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.main.HooliganActivity"
+            android:name=".app.main.activities.HooliganActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
             android:excludeFromRecents="true"
             android:exported="false"
             android:finishOnTaskLaunch="false"
             android:launchMode="singleInstance"
             android:theme="@style/HooliganActivityStyle"/>
-        <activity android:name=".app.main.MainActivity"
+        <activity android:name=".app.main.activities.MainActivity"
             android:screenOrientation="portrait"/>
         <!-- 以下是极光推送需要的 -->
         <!-- Required SDK 核心功能 -->

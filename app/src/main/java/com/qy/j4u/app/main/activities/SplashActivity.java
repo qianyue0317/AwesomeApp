@@ -1,4 +1,4 @@
-package com.qy.j4u.app.main;
+package com.qy.j4u.app.main.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

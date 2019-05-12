@@ -1,4 +1,4 @@
-package com.j4u.annotationlib.api;
+package com.qianyue.annotation_api.api;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

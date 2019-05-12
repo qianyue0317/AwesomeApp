@@ -19,8 +19,8 @@ public class ARouterWrapper {
     /**
      * 存放所有路由
      */
-    public static interface Route{
-        public static final String MAIN = "/main/MainActivity";
+    public interface Route{
+        String MAIN = "/main/MainActivity";
     }
 
 }

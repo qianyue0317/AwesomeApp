@@ -2,3 +2,5 @@
 
 jni java kotlin 混合开发
 启动优化
+
+生成设备唯一的uuid

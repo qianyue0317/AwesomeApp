@@ -1,7 +1,7 @@
 package com.j4u.annotationlib;
 
 import com.google.auto.service.AutoService;
-import com.j4u.annotationlib.api.FirstAnnotation;
+import com.qianyue.annotation_api.api.FirstAnnotation;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
