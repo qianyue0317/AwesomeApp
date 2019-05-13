@@ -1,12 +1,17 @@
 package com.qy.j4u.global;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Bundle;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.qy.j4u.global.constants.Constant;
+import com.qy.j4u.di.components.DaggerNetComponent;
+import com.qy.j4u.di.components.NetComponent;
+import com.qy.j4u.global.constants.Constants;
 import com.qy.j4u.pojo.DaoMaster;
 import com.qy.j4u.pojo.DaoSession;
+import com.qy.j4u.utils.JLog;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -22,6 +27,8 @@ public class ForUApplication extends Application {
 
     private static ForUApplication sInstance;
     private DaoSession mDaoSession;
+    private NetComponent mNetComponent;
+
 
     public static ForUApplication getInstance() {
         return sInstance;
@@ -37,11 +44,63 @@ public class ForUApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        initActivityLife();
         initARouter();
+        initNetModule();
         startCoreService();
         initJPush();
         initGreenDao();
         initToasty();
+    }
+
+    /**
+     * 注册activity生命周期监听
+     */
+    private void initActivityLife() {
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                JLog.i("activity_life", "onActivityCreated:" + activity);
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+                JLog.i("activity_life", "onActivityStarted:" + activity);
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+                JLog.i("activity_life", "onActivityResumed:" + activity);
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+                JLog.i("activity_life", "onActivityPaused:" + activity);
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+                JLog.i("activity_life", "onActivityStopped:" + activity);
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+                JLog.i("activity_life", "onActivitySaveInstanceState:" + activity);
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                JLog.i("activity_life", "onActivityDestroyed:" + activity);
+            }
+        });
+    }
+
+    public NetComponent getNetComponent() {
+        return mNetComponent == null ? DaggerNetComponent.create() : mNetComponent;
+    }
+
+    private void initNetModule() {
+        mNetComponent = DaggerNetComponent.create();
     }
 
     private void initToasty() {
@@ -53,7 +112,7 @@ public class ForUApplication extends Application {
     }
 
     private void initARouter() {
-        if (Constant.DEBUG) {
+        if (Constants.DEBUG) {
             ARouter.openLog();
             ARouter.openDebug();
         }

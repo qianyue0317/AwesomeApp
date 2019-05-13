@@ -6,6 +6,7 @@ apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'com.qianyue.plugin'
 apply plugin: 'kotlin-kapt'
 kapt {
+    generateStubs = true
     arguments {
         arg('AROUTER_MODULE_NAME', project.getName())
         arg('AROUTER_GENERATE_DOC','enable')

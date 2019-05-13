@@ -7,20 +7,18 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.qy.j4u.CoreBinder;
 import com.qy.j4u.R;
-import com.qy.j4u.TestMyAnnotation;
 import com.qy.j4u.app.main.presenters.MainPresenter;
 import com.qy.j4u.app.main.views.MainView;
-import com.qy.j4u.base.BaseActivity;
+import com.qy.j4u.base.MVPBaseActivity;
+import com.qy.j4u.di.components.DaggerMainComponent;
+import com.qy.j4u.di.modules.MainModule;
 import com.qy.j4u.eventmessages.RaspberryIp;
 import com.qy.j4u.global.ForUApplication;
-import com.qy.j4u.pojo.DaoSession;
-import com.qy.j4u.pojo.GreenDaoTestPojo;
 import com.qy.j4u.services.RemoteCoreService;
 import com.qy.j4u.utils.ARouterWrapper;
 import com.qy.j4u.utils.JLog;
@@ -29,16 +27,26 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.Date;
-import java.util.List;
-
 import androidx.annotation.Nullable;
 import butterknife.BindView;
 @Route(path = ARouterWrapper.Route.MAIN)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends MVPBaseActivity<MainPresenter> {
 
     @BindView(R.id.tv_raspberry_ip)
     TextView mTvIp;
+    private MainView mView = new MainView() {
+        @Override
+        public void testProxy(String content) {
+
+        }
+    };
+
+    @Override
+    protected void daggerInject() {
+        DaggerMainComponent.builder().mainModule(new MainModule(mView))
+                .netComponent(ForUApplication.getInstance().getNetComponent())
+                .build().inject(this);
+    }
 
     @Override
     protected String getToolBarTitle() {
@@ -59,7 +67,6 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-//        System.exit(0);
     }
 
     @Override
@@ -70,46 +77,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
+        bindRemoteService();
+    }
 
+    @Override
+    protected void loadData() {
 
+    }
 
-        DaoSession daoSession = ForUApplication.getInstance().getGreenDaoSession();
-        GreenDaoTestPojo pojo = new GreenDaoTestPojo();
-        pojo.setText("这是第二次要插入到数据库的");
-        pojo.setDate(new Date());
-        daoSession.insert(pojo);
-        List<GreenDaoTestPojo> greenDaoTestPojos = daoSession.loadAll(GreenDaoTestPojo.class);
-//        JLog.i("id为:" + pojo.getId());
-        for (int i = 0; i < greenDaoTestPojos.size(); i++) {
-            JLog.i(greenDaoTestPojos.get(i));
-        }
-
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        setOnClickSolveShake(findViewById(R.id.btn), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((TextView) findViewById(R.id.tv_hello)).setText(new TestMyAnnotation().getContent());
-//                ARouter.getInstance().build("/testARouter/activity")
-//                        .withString("passStr","你好,ARouter")
-//                        .navigation();
-                new MainPresenter(new MainView() {
-                    @Override
-                    public void testProxy(String content) {
-                        JLog.i("testProxy:"+content);
-                        throw new RuntimeException("扔出来的异常");
-                    }
-                }).testGetView();
-            }
-        });
-
-
-
+    private void bindRemoteService() {
         bindService(new Intent(this, RemoteCoreService.class), new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -128,10 +104,6 @@ public class MainActivity extends BaseActivity {
         }, BIND_AUTO_CREATE);
     }
 
-    @Override
-    protected void loadData() {
-
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

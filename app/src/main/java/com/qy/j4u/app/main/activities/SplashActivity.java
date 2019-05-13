@@ -6,15 +6,25 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.qy.j4u.R;
+import com.qy.j4u.app.main.presenters.SplashPresenter;
+import com.qy.j4u.app.main.views.SplashView;
 import com.qy.j4u.base.BaseActivity;
+import com.qy.j4u.di.components.DaggerSplashComponent;
+import com.qy.j4u.di.modules.SplashModule;
+import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.utils.ARouterWrapper;
 import com.qy.j4u.utils.JLog;
+import com.qy.j4u.utils.JUtil;
+import com.qy.j4u.utils.ToastUtil;
+
+import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 
 
 /**
  * Created by qy on 2016/11/2.
+ * modified by qy on 2019/05/13
  */
 
 public class SplashActivity extends BaseActivity implements Handler.Callback {
@@ -22,14 +32,26 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
     private static final int JUMP = 1;
     private static final long DURATION = 2000;
     private Handler mHandler;
+    @Inject
+    SplashPresenter mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
-            JLog.d("MainActivity","onCreate intent flag FLAG_ACTIVITY_BROUGHT_TO_FRONT");
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            JLog.d("MainActivity", "onCreate intent flag FLAG_ACTIVITY_BROUGHT_TO_FRONT");
             finish();
         }
+    }
+
+    @Override
+    protected void daggerInject() {
+        DaggerSplashComponent.builder()
+                .splashModule(new SplashModule(mView))
+                .netComponent(ForUApplication.getInstance().getNetComponent())
+                .build()
+                .inject(this);
+        getLifecycle().addObserver(mPresenter);
     }
 
     @Override
@@ -58,7 +80,7 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
 
     @Override
     protected void loadData() {
-
+        mPresenter.loginWithUUid(JUtil.getDeviceUUID(this));
     }
 
     @Override
@@ -75,4 +97,17 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
         }
         return true;
     }
+
+    private SplashView mView = new SplashView() {
+        @Override
+        public void onLoginSuccess(String s) {
+            ToastUtil.showSuccessShort("登录成功" + s);
+        }
+
+        @Override
+        public void onLoginError() {
+
+        }
+    };
+
 }

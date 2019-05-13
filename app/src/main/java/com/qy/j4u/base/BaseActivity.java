@@ -18,6 +18,8 @@ import com.qy.j4u.R;
 import com.qy.j4u.app.main.activities.MainActivity;
 import com.qy.j4u.app.main.activities.SplashActivity;
 import com.qy.j4u.utils.KeyboardTool;
+import com.qy.j4u.utils.RxLifecycleUtils;
+import com.uber.autodispose.AutoDisposeConverter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        daggerInject();
         if (TextUtils.isEmpty(getToolBarTitle())) {
             setContentView(provideContentViewId());
         } else {
@@ -66,16 +69,33 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         /* ***************注入传递过来的参数************** */
         ARouter.getInstance().inject(this);
-        initVariables();
         /* ****************注入控件***************** */
         ButterKnife.bind(this);
+        initVariables();
         initView(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         try {
             loadData();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * rxjava observer绑定生命周期
+     */
+    protected <T> AutoDisposeConverter<T> bindLifecycle() {
+        return RxLifecycleUtils.bindLifecycle(this);
+    }
+
+    /**
+     * 用daggerComponent注入依赖
+     */
+    protected abstract void daggerInject();
 
     /**
      * 点击右侧图标的回调方法
@@ -284,7 +304,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initView(@Nullable Bundle savedInstanceState);
 
     /**
-     * 加载数据
+     * 加载数据,需要presenter监听activity和fragment生命周期,loadData放在onCreate中的话BasePresenter中
+     * 的mLifecycleOwner初始化要滞后于loadData,会出现异常.故放在onstart中
      */
     protected abstract void loadData();
 

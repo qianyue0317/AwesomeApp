@@ -14,3 +14,8 @@ main-
     -constants  常量包
         -HttpUrlConstants   数据接口包(其采用静态内部类的形式进行模块的划分)
         -TransferKeys   传递数据时的用的Key例如 intent.putExtra(TransferKeys.Login.NAME,"just4u")
+    -di  dagger注入相关
+        -components
+        -modules
+        -scopes
+    -model 数据层相关
