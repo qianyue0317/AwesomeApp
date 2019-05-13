@@ -12,7 +12,6 @@
     使用RemoteView,使用进程通信,尽量使用各种效果,其中5.0的共享元素要用上
     ,滑动条目一律用RecyclerView
     注意每个页面需要解决EditText的焦点问题,自动弹出键盘
-    当Activity或者Fragment结束或者暂停之后应该结束请求线程
     开发中注意使用单元测试,注意使用手势监听,ViewDragHelper,注意使用wifi,数据网络接口,还有蓝牙,摄像头,以及语音
     api,usb数据交换,定位,短信拦截,电话监听.流量统计.
     注意使用位运算符
@@ -38,13 +37,10 @@
     usb:usb-serial-for-android,
     监听网络状态:NetworkEvents
     工具包:android-common
-    网络请求框架:Fast-Android-Networking
     动画库:BaseAnimation
     地图:百度地图,高德地图
-    支付:ping++(收费的),支付宝,微信支付
     蓝牙:android-lite-bluetoothLE
-    即时通讯:
-    图片加载:UniversalImageLoader,Fresco,Glide,Picasso
+    图片加载:Fresco,Glide,Picasso
     缓存:ASimpleCache,AndroidVideoCache,GreenDao,OrmLite
 
     控件:PhotoView(照片)SwipeBackLayout,ShortcutBadger(桌面图标消息提醒),Android-Bootstrap,
@@ -58,7 +54,6 @@
     circular-progress-button(加载button)  Depth-LIB-Android-(炫酷)  RoundedImageView
     MusicPlayerView BigImageViewer(大图预览) MPAndroidChart(表格) Android-PickerView(时间选择)
     SwipeMenuListView(侧滑删除) StepView(步骤)    XRecyclerView   UnderLineLinearLayout(时间轴)
-    android-flip(翻页,有点旧了)
         贝塞尔相关:ToggleDrawable    BezierLoadingView
 
         主页导航切换:ViewPagerIndicator
@@ -88,7 +83,6 @@
     网络请求:Retrofit + RxJava
     数据库框架:GreenDao
     图片加载框架:Fresco
-    屏幕适配框架:使用hongyang的框架
     注意项目中需要对这些框架进行二次封装
 
 命名规范:

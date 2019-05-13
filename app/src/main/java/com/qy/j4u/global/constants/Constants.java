@@ -14,7 +14,7 @@ public class Constants {
         // ...不能实例化
     }
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     public static final boolean LOG = true;
 

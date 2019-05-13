@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import butterknife.ButterKnife;
 import io.reactivex.functions.Consumer;
 import kotlin.Unit;
@@ -62,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (getToolBarSecondIcon() != 0) {
                 ivSecondIcon.setVisibility(View.VISIBLE);
                 ivSecondIcon.setImageResource(getToolBarSecondIcon());
-                setOnClickSolveShake(ivSecondIcon,this::onSecondIconClick);
+                setOnClickSolveShake(ivSecondIcon, this::onSecondIconClick);
             }
             tvTitle.setText(getToolBarTitle());
             ivBack.setOnClickListener(v -> finish());
@@ -254,7 +255,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param view            被点击的view
      * @param onClickListener 监听器
      */
-    @SuppressLint("CheckResult")
+    @SuppressLint({"CheckResult", "AutoDispose"})
     protected void setOnClickSolveShake(final View view, final View.OnClickListener
             onClickListener) {
         //noinspection ResultOfMethodCallIgnored

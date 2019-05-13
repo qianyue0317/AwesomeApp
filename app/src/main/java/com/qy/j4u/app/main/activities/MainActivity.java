@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.view.KeyEvent;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.qy.j4u.CoreBinder;
 import com.qy.j4u.R;
+import com.qy.j4u.app.main.fragments.ITCategoryFragment;
 import com.qy.j4u.app.main.presenters.MainPresenter;
 import com.qy.j4u.app.main.views.MainView;
 import com.qy.j4u.base.MVPBaseActivity;
@@ -28,18 +32,21 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
+
 @Route(path = ARouterWrapper.Route.MAIN)
 public class MainActivity extends MVPBaseActivity<MainPresenter> {
 
-    @BindView(R.id.tv_raspberry_ip)
-    TextView mTvIp;
-    private MainView mView = new MainView() {
-        @Override
-        public void testProxy(String content) {
 
-        }
-    };
+    @BindView(R.id.fl_container)
+    FrameLayout mFrameContainer;
+    @BindView(R.id.bottom_navigation_bar)
+    BottomNavigationBar mNavigationBar;
+
 
     @Override
     protected void daggerInject() {
@@ -60,7 +67,6 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
 
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onRaspIp(RaspberryIp raspberryIp) {
-        mTvIp.setText(raspberryIp.getIp());
     }
 
     @Override
@@ -77,8 +83,39 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
+        mNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                switchFragment(position);
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+
+            }
+        });
+        mNavigationBar
+                .addItem(new BottomNavigationItem(R.mipmap.code, "IT"))
+                .addItem(new BottomNavigationItem(R.mipmap.hardware, "树莓派"))
+                .addItem(new BottomNavigationItem(R.mipmap.mine, "我的"))
+                .setFirstSelectedPosition(0)
+                .initialise();
         bindRemoteService();
     }
+
+
+    private void switchFragment(int position) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fl_container, ITCategoryFragment.getInstance());
+        fragmentTransaction.commit();
+    }
+
 
     @Override
     protected void loadData() {
@@ -115,5 +152,24 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
     }
 
 
+
+
+    private MainView mView = new MainView() {
+        @Override
+        public void showLoading(String msg) {
+
+        }
+
+        @Override
+        public void hideLoading() {
+
+        }
+
+        @Override
+        public void testProxy(String content) {
+
+        }
+
+    };
 
 }

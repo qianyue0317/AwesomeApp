@@ -60,37 +60,37 @@ public class ForUApplication extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-                JLog.i("activity_life", "onActivityCreated:" + activity);
+//                JLog.i("activity_life", "onActivityCreated:" + activity);
             }
 
             @Override
             public void onActivityStarted(Activity activity) {
-                JLog.i("activity_life", "onActivityStarted:" + activity);
+//                JLog.i("activity_life", "onActivityStarted:" + activity);
             }
 
             @Override
             public void onActivityResumed(Activity activity) {
-                JLog.i("activity_life", "onActivityResumed:" + activity);
+//                JLog.i("activity_life", "onActivityResumed:" + activity);
             }
 
             @Override
             public void onActivityPaused(Activity activity) {
-                JLog.i("activity_life", "onActivityPaused:" + activity);
+//                JLog.i("activity_life", "onActivityPaused:" + activity);
             }
 
             @Override
             public void onActivityStopped(Activity activity) {
-                JLog.i("activity_life", "onActivityStopped:" + activity);
+//                JLog.i("activity_life", "onActivityStopped:" + activity);
             }
 
             @Override
             public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-                JLog.i("activity_life", "onActivitySaveInstanceState:" + activity);
+//                JLog.i("activity_life", "onActivitySaveInstanceState:" + activity);
             }
 
             @Override
             public void onActivityDestroyed(Activity activity) {
-                JLog.i("activity_life", "onActivityDestroyed:" + activity);
+//                JLog.i("activity_life", "onActivityDestroyed:" + activity);
             }
         });
     }

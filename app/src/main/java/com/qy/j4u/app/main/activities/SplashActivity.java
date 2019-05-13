@@ -68,9 +68,6 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
     @Override
     protected void initVariables() {
         mHandler = new Handler(this);
-        Message obtain = Message.obtain();
-        obtain.what = JUMP;
-        mHandler.sendMessageDelayed(obtain, DURATION);
     }
 
     @Override
@@ -100,13 +97,27 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
 
     private SplashView mView = new SplashView() {
         @Override
+        public void showLoading(String msg) {
+
+        }
+
+        @Override
+        public void hideLoading() {
+
+        }
+
+        @Override
         public void onLoginSuccess(String s) {
-            ToastUtil.showSuccessShort("登录成功" + s);
+            Message obtain = Message.obtain();
+            obtain.what = JUMP;
+            mHandler.sendMessageDelayed(obtain, DURATION);
         }
 
         @Override
         public void onLoginError() {
-
+            Message obtain = Message.obtain();
+            obtain.what = JUMP;
+            mHandler.sendMessageDelayed(obtain, DURATION);
         }
     };
 

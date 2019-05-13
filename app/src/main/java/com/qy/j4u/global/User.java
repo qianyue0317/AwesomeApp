@@ -2,6 +2,7 @@ package com.qy.j4u.global;
 
 import com.qy.j4u.model.entity.ITCategoryItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,9 +61,6 @@ public class User {
         this.uuid = uuid;
     }
 
-    private User() {
-
-    }
 
     @Override
     public String toString() {
@@ -81,7 +79,7 @@ public class User {
     }
 
     public List<ITCategoryItem> getIt_categories() {
-        return it_categories;
+        return it_categories == null ? new ArrayList<>() : it_categories;
     }
 
     public void setIt_categories(List<ITCategoryItem> it_categories) {
@@ -89,7 +87,14 @@ public class User {
     }
 
     private static class InstanceHolder {
-        private static final User instance= new User();
+        private static User instance = null;
+    }
+
+    /**
+     * 初始化user
+     */
+    public static void init(User user) {
+        InstanceHolder.instance = user == null ? new User() : user;
     }
 
 }

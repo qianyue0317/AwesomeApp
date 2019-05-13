@@ -7,5 +7,7 @@ package com.qy.j4u.base;
  */
 
 public interface BaseView {
+    void showLoading(String msg);
 
+    void hideLoading();
 }
