@@ -11,6 +11,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 
@@ -24,6 +25,7 @@ public interface ApiService {
      * 用uuid 登录
      * @param uuid 设备唯一标识
      */
+    @Headers("test_annotation_header:value")
     @POST(Urls.Account.LOGIN)
     @FormUrlEncoded
     Observable<Result<User>> loginWithUUid(@Field("uuid")String uuid);

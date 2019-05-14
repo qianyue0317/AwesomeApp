@@ -60,9 +60,11 @@ public class JHttpLoggingInterceptor implements Interceptor {
             String name = headers.name(i);
             // Skip headers from the request body as they are explicitly logged above.
             if (!"Content-Type".equalsIgnoreCase(name) && !"Content-Length".equalsIgnoreCase(name)) {
-                requestMessage.append(name).append(": ").append(headers.value(i));
+                requestMessage.append(name).append(": ").append(headers.value(i)).append("\n");
             }
         }
+
+        requestMessage.append("body:");
 
         if (!hasRequestBody) {
             requestMessage.append("--> END ").append(request.method());
@@ -134,8 +136,10 @@ public class JHttpLoggingInterceptor implements Interceptor {
             }
 
             if (contentLength != 0) {
-                responseMessage.append("");
-                responseMessage.append(buffer.clone().readString(charset));
+                responseMessage.append("\n");
+                String responseJson = buffer.clone().readString(charset);
+                JLog.json("J4U_response", responseJson);
+                responseMessage.append(responseJson);
             }
 
             responseMessage.append("<-- END HTTP (").append(buffer.size()).append("-byte body)");

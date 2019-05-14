@@ -1,6 +1,7 @@
 package com.qy.j4u.di.modules;
 
 import com.qy.j4u.global.constants.Urls;
+import com.qy.j4u.model.http.AddHeaderInterceptor;
 import com.qy.j4u.model.http.ApiService;
 import com.qy.j4u.model.http.JHttpLoggingInterceptor;
 import com.qy.j4u.model.http.StringConverterFactory;
@@ -31,6 +32,7 @@ public class NetModule {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
+                .addInterceptor(new AddHeaderInterceptor())
                 .addInterceptor(new JHttpLoggingInterceptor())
                 .build();
     }
