@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface EssayListView extends BaseView {
     void onEssayList(List<ITEssayItem> itEssayItems);
+
+    void onError();
 }

@@ -11,7 +11,6 @@ import com.qy.j4u.di.components.NetComponent;
 import com.qy.j4u.global.constants.Constants;
 import com.qy.j4u.pojo.DaoMaster;
 import com.qy.j4u.pojo.DaoSession;
-import com.qy.j4u.utils.JLog;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -44,6 +43,7 @@ public class ForUApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        initUser();
         initActivityLife();
         initARouter();
         initNetModule();
@@ -51,6 +51,10 @@ public class ForUApplication extends Application {
         initJPush();
         initGreenDao();
         initToasty();
+    }
+
+    private void initUser() {
+        User.initFromLocal();
     }
 
     /**

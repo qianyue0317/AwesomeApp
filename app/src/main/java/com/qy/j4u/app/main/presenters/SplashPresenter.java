@@ -35,11 +35,11 @@ public class SplashPresenter extends BasePresenter<SplashView> {
                         ToastUtil.showSuccessShort("登录成功");
                         getView().onLoginSuccess("success");
                         User.init(user);
+                        User.save();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        User.init(new User());
                         ToastUtil.showErrorShort(String.format("登录失败:%s", e.getMessage()));
                         getView().onLoginError();
                     }

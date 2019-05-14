@@ -26,7 +26,6 @@ import java.util.concurrent.TimeUnit;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import butterknife.ButterKnife;
 import io.reactivex.functions.Consumer;
 import kotlin.Unit;
@@ -94,7 +93,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 用daggerComponent注入依赖
+     * 用daggerComponent注入依赖 如果不是用dagger注入则方法内部不用写任何东西
      */
     protected abstract void daggerInject();
 

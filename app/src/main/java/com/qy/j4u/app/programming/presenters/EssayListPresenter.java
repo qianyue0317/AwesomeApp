@@ -28,7 +28,20 @@ public class EssayListPresenter extends BasePresenter<EssayListView> {
                         .subscribe(new ObserverWrapper<List<ITEssayItem>>() {
                             @Override
                             public void onSuccess(List<ITEssayItem> itEssayItems) {
+                                getView().showLoading(null);
                                 getView().onEssayList(itEssayItems);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                super.onError(e);
+                                getView().onError();
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                super.onComplete();
+                                getView().hideLoading();
                             }
                         });
     }

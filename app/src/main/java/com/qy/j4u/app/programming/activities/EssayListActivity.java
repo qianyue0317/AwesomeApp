@@ -1,12 +1,12 @@
 package com.qy.j4u.app.programming.activities;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.qmuiteam.qmui.widget.QMUIEmptyView;
 import com.qy.j4u.R;
 import com.qy.j4u.app.programming.presenters.EssayListPresenter;
 import com.qy.j4u.app.programming.views.EssayListView;
@@ -31,6 +31,8 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+    @BindView(R.id.empty_view)
+    QMUIEmptyView mEmptyView;
     private List<ITEssayItem> mData;
     private BaseQuickAdapter<ITEssayItem, BaseViewHolder> mAdapter;
     @Autowired(name = TransferKeys.CATEGORY_ID)
@@ -62,15 +64,12 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
                 helper.setText(android.R.id.text1, item.getTitle());
             }
         };
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ITEssayItem itEssayItem = mData.get(position);
-                ARouterWrapper.build(ARouterWrapper.Route.ESSAY_DETAIL)
-                        .withString(TransferKeys.ESSAY_TITLE, itEssayItem.getTitle())
-                        .withString(TransferKeys.ESSAY_URL, itEssayItem.getUrl())
-                        .navigation(EssayListActivity.this);
-            }
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            ITEssayItem itEssayItem = mData.get(position);
+            ARouterWrapper.build(ARouterWrapper.Route.ESSAY_DETAIL)
+                    .withString(TransferKeys.ESSAY_TITLE, itEssayItem.getTitle())
+                    .withString(TransferKeys.ESSAY_URL, itEssayItem.getUrl())
+                    .navigation(EssayListActivity.this);
         });
     }
 
@@ -80,6 +79,7 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
                 false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mEmptyView.setOnClickListener(v -> loadData());
     }
 
     @Override
@@ -96,13 +96,19 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
         }
 
         @Override
-        public void showLoading(String msg) {
+        public void onError() {
+            mEmptyView.setDetailText(getString(R.string.str_empty_tip_retry));
+            mEmptyView.show();
+        }
 
+        @Override
+        public void showLoading(String msg) {
+            mEmptyView.show(true);
         }
 
         @Override
         public void hideLoading() {
-
+            mEmptyView.hide();
         }
     };
 
