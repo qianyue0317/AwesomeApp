@@ -4,3 +4,5 @@ jni java kotlin 混合开发
 启动优化
 
 生成设备唯一的uuid
+
+如果接口需要本次数据库存储 需要将数据层但分出来, 不直接在presenter中写

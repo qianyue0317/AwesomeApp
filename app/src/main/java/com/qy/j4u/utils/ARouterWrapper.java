@@ -21,6 +21,7 @@ public class ARouterWrapper {
      */
     public interface Route{
         String MAIN = "/main/MainActivity";
+        String ESSAY_LIST = "/IT/EssayListActivity";
     }
 
 }

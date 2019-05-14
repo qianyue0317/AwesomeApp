@@ -3,9 +3,6 @@ package com.qy.j4u.app.main.fragments;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.qy.j4u.R;
@@ -14,6 +11,8 @@ import com.qy.j4u.global.User;
 import com.qy.j4u.model.entity.ITCategoryItem;
 import com.qy.j4u.widget.SlideRecyclerView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
 public class ITCategoryFragment extends BaseFragment {
@@ -22,7 +21,7 @@ public class ITCategoryFragment extends BaseFragment {
     SlideRecyclerView mRecyclerView;
 
 
-    public static ITCategoryFragment getInstance() {
+    public static ITCategoryFragment newInstance() {
         ITCategoryFragment instance = new ITCategoryFragment();
         return instance;
     }

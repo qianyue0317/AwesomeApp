@@ -8,14 +8,15 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.qy.j4u.CoreBinder;
 import com.qy.j4u.R;
+import com.qy.j4u.app.main.fragments.HardwareFragment;
 import com.qy.j4u.app.main.fragments.ITCategoryFragment;
+import com.qy.j4u.app.main.fragments.MineFragment;
 import com.qy.j4u.app.main.presenters.MainPresenter;
 import com.qy.j4u.app.main.views.MainView;
 import com.qy.j4u.base.MVPBaseActivity;
@@ -32,11 +33,10 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 @Route(path = ARouterWrapper.Route.MAIN)
 public class MainActivity extends MVPBaseActivity<MainPresenter> {
@@ -46,7 +46,8 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
     FrameLayout mFrameContainer;
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar mNavigationBar;
-
+    private Fragment mCurrentFragment;
+    private String[] mFragmentTags;
 
     @Override
     protected void daggerInject() {
@@ -65,7 +66,7 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
         return R.layout.activity_main;
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onRaspIp(RaspberryIp raspberryIp) {
     }
 
@@ -77,7 +78,9 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
 
     @Override
     protected void initVariables() {
-
+        mFragmentTags = new String[]{ITCategoryFragment.class.getSimpleName(),
+                HardwareFragment.class.getSimpleName()
+                , MineFragment.class.getSimpleName()};
     }
 
     @Override
@@ -105,14 +108,46 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
                 .addItem(new BottomNavigationItem(R.mipmap.mine, "我的"))
                 .setFirstSelectedPosition(0)
                 .initialise();
+        mNavigationBar.selectTab(0);
         bindRemoteService();
     }
 
 
+    //  这里是为了防止出现重叠现象
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int currentSelectedPosition = mNavigationBar.getCurrentSelectedPosition();
+        switchFragment(currentSelectedPosition);
+    }
+
     private void switchFragment(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fl_container, ITCategoryFragment.getInstance());
+
+        String fragmentTag = mFragmentTags[position % mFragmentTags.length];
+        Fragment target =
+                fragmentManager.findFragmentByTag(fragmentTag);
+        if (target == null) {
+            switch (position) {
+                case 0:
+                    target = ITCategoryFragment.newInstance();
+                    break;
+                case 1:
+                    target = HardwareFragment.newInstance();
+                    break;
+                case 2:
+                default:
+                    target = MineFragment.newInstance();
+                    break;
+            }
+            fragmentTransaction.add(R.id.fl_container, target, fragmentTag);
+        }
+        if (mCurrentFragment != null) {
+            fragmentTransaction.hide(mCurrentFragment);
+        }
+        fragmentTransaction.show(target);
+        mCurrentFragment = target;
         fragmentTransaction.commit();
     }
 
@@ -150,8 +185,6 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
 
 
     private MainView mView = new MainView() {

@@ -13,13 +13,13 @@ import androidx.annotation.Nullable;
 public abstract class MVPBaseActivity<P extends BasePresenter> extends BaseActivity {
 
     @Inject
-    protected P mP;
+    protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /* 让presenter能够监听Activity的生命周期 */
-        getLifecycle().addObserver(mP);
+        getLifecycle().addObserver(mPresenter);
     }
 
 }

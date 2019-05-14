@@ -11,6 +11,7 @@ dependencies {
     // 以上support包依赖全部迁移到androidx
     // 自定义编译时注解
     implementation project(path: ':annotation_api')
+    kapt project(path: ':annotationLib')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
