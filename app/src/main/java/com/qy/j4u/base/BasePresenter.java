@@ -65,7 +65,7 @@ public class BasePresenter<V extends BaseView> implements IPresenter {
     @Override
     public void onCreate(@NotNull LifecycleOwner owner) {
         mLifecycleOwner = owner;
-        JLog.i("BasePresenter", "onCreate:" + owner + "  " + getClass().getName());
+//        JLog.i("BasePresenter", "onCreate:" + owner + "  " + getClass().getName());
     }
 
     @Override
@@ -100,7 +100,7 @@ public class BasePresenter<V extends BaseView> implements IPresenter {
             if (mTarget != null && mTarget.get() != null) {
                 try {
                     /* ***********捕获其他异常(此处是view的实际调用的位置)************ */
-                    JLog.i("实际的view方法执行的位置---------");
+//                    JLog.i("实际的view方法执行的位置---------");
                     Object invoke = method.invoke(mTarget.get(), args);
                     return invoke;
                 } catch (Exception e) {

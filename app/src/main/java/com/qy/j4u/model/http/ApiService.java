@@ -3,7 +3,10 @@ package com.qy.j4u.model.http;
 
 import com.qy.j4u.global.User;
 import com.qy.j4u.global.constants.Urls;
+import com.qy.j4u.model.entity.ITEssayItem;
 import com.qy.j4u.model.entity.Result;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -24,4 +27,11 @@ public interface ApiService {
     @POST(Urls.Account.LOGIN)
     @FormUrlEncoded
     Observable<Result<User>> loginWithUUid(@Field("uuid")String uuid);
+    /**
+     * 文章列表
+     * @param categoryId 文章类别的id
+     */
+    @POST(Urls.IT.ESSAY_LIST)
+    @FormUrlEncoded
+    Observable<Result<List<ITEssayItem>>> getEssayList(@Field("it_category_id")int categoryId);
 }

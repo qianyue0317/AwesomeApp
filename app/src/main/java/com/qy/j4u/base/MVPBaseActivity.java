@@ -22,4 +22,8 @@ public abstract class MVPBaseActivity<P extends BasePresenter> extends BaseActiv
         getLifecycle().addObserver(mPresenter);
     }
 
+    public P getPresenter() {
+        return mPresenter;
+    }
+
 }

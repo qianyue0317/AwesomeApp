@@ -25,4 +25,8 @@ public class Urls {
         public static final String LOGIN = "account/login";
     }
 
+    public static final class IT{
+        public static final String ESSAY_LIST = "IT/essayList";
+    }
+
 }

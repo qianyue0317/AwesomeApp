@@ -44,13 +44,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* ***************注入传递过来的参数************** */
+        ARouter.getInstance().inject(this);
         daggerInject();
         if (TextUtils.isEmpty(getToolBarTitle())) {
             setContentView(provideContentViewId());
         } else {
             setContentView(R.layout.activity_base);
             FrameLayout content = findViewById(R.id.fl_content);
-            content.addView(getLayoutInflater().inflate(provideContentViewId(), content, true));
+            content.addView(getLayoutInflater().inflate(provideContentViewId(), content, false));
             TextView tvTitle = findViewById(R.id.tv_base_title);
             TextView tvSecondTitle = findViewById(R.id.tv_base_second_title);
             ImageView ivBack = findViewById(R.id.iv_base_back);
@@ -68,8 +70,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             tvTitle.setText(getToolBarTitle());
             ivBack.setOnClickListener(v -> finish());
         }
-        /* ***************注入传递过来的参数************** */
-        ARouter.getInstance().inject(this);
         /* ****************注入控件***************** */
         ButterKnife.bind(this);
         initVariables();

@@ -15,7 +15,7 @@ import com.qy.j4u.utils.JLog;
 public class ARouterInterceptor implements IInterceptor {
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {
-        JLog.i("postcard:" + postcard);
+//        JLog.i("postcard:" + postcard);
         callback.onContinue(postcard);
     }
 

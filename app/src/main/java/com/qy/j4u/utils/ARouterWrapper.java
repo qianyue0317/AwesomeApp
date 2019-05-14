@@ -17,11 +17,12 @@ public class ARouterWrapper {
     }
 
     /**
-     * 存放所有路由
+     * 存放所有路由 第一个/后边的词是组名
      */
     public interface Route{
         String MAIN = "/main/MainActivity";
         String ESSAY_LIST = "/IT/EssayListActivity";
+        String ESSAY_DETAIL = "/IT/EssayDetailActivity";
     }
 
 }

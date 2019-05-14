@@ -8,7 +8,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.qy.j4u.R;
 import com.qy.j4u.base.BaseFragment;
 import com.qy.j4u.global.User;
+import com.qy.j4u.global.constants.TransferKeys;
 import com.qy.j4u.model.entity.ITCategoryItem;
+import com.qy.j4u.utils.ARouterWrapper;
 import com.qy.j4u.widget.SlideRecyclerView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -59,5 +61,13 @@ public class ITCategoryFragment extends BaseFragment {
                     }
                 };
         mRecyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ARouterWrapper.build(ARouterWrapper.Route.ESSAY_LIST)
+                        .withInt(TransferKeys.CATEGORY_ID,User.getUser().getIt_categories().get(position).getId())
+                        .navigation(mActivity);
+            }
+        });
     }
 }
