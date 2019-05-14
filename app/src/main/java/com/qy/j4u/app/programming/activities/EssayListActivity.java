@@ -17,6 +17,7 @@ import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.global.constants.TransferKeys;
 import com.qy.j4u.model.entity.ITEssayItem;
 import com.qy.j4u.utils.ARouterWrapper;
+import com.qy.j4u.utils.collectionutil.CollectionKit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,8 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
     @Override
     protected void initVariables() {
         mData = new ArrayList<>();
-        mAdapter = new BaseQuickAdapter<ITEssayItem, BaseViewHolder>(android.R.layout.simple_list_item_1, mData) {
+        mAdapter =
+                new BaseQuickAdapter<ITEssayItem, BaseViewHolder>(android.R.layout.simple_list_item_1, mData) {
             @Override
             protected void convert(BaseViewHolder helper, ITEssayItem item) {
                 helper.setText(android.R.id.text1, item.getTitle());
@@ -93,6 +95,10 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
             mData.clear();
             mData.addAll(itEssayItems);
             mAdapter.notifyDataSetChanged();
+            mEmptyView.hide();
+            if (CollectionKit.isEmpty(mData)) {
+                mEmptyView.show("", getString(R.string.str_empty_tip_no_data));
+            }
         }
 
         @Override

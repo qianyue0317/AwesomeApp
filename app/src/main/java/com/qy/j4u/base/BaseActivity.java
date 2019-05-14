@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.jakewharton.rxbinding3.view.RxView;
 import com.qy.j4u.R;
 import com.qy.j4u.app.main.activities.MainActivity;
 import com.qy.j4u.app.main.activities.SplashActivity;
+import com.qy.j4u.global.User;
 import com.qy.j4u.utils.KeyboardTool;
 import com.qy.j4u.utils.RxLifecycleUtils;
 import com.uber.autodispose.AutoDisposeConverter;
@@ -74,6 +76,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         initVariables();
         initView(savedInstanceState);
     }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        User.initFromLocal();
+    }
+
 
     @Override
     protected void onStart() {

@@ -15,7 +15,6 @@ import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.utils.ARouterWrapper;
 import com.qy.j4u.utils.JLog;
 import com.qy.j4u.utils.JUtil;
-import com.qy.j4u.utils.ToastUtil;
 
 import javax.inject.Inject;
 
@@ -89,7 +88,7 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
     @Override
     public boolean handleMessage(Message msg) {
         if (msg.what == JUMP) {
-            ARouterWrapper.build(ARouterWrapper.Route.MAIN).navigation();
+            ARouterWrapper.build(ARouterWrapper.Route.MAIN).navigation(this);
             finish();
         }
         return true;

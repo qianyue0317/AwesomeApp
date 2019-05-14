@@ -37,12 +37,6 @@ public class EssayListPresenter extends BasePresenter<EssayListView> {
                                 super.onError(e);
                                 getView().onError();
                             }
-
-                            @Override
-                            public void onComplete() {
-                                super.onComplete();
-                                getView().hideLoading();
-                            }
                         });
     }
 

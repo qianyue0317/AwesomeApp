@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name" >J4U</string>
     <string name="str_empty_tip_retry">加载失败，点击重试！</string>
+    <string name="str_empty_tip_no_data">没有数据</string>
 </resources>

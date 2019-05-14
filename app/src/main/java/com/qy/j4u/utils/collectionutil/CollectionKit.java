@@ -12,7 +12,7 @@ public class CollectionKit {
     }
 
     public static boolean isEmpty(List list) {
-        return list != null && list.isEmpty();
+        return list == null || list.isEmpty();
     }
 
 }
