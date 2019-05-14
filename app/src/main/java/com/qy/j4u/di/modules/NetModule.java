@@ -2,6 +2,7 @@ package com.qy.j4u.di.modules;
 
 import com.qy.j4u.global.constants.Urls;
 import com.qy.j4u.model.http.ApiService;
+import com.qy.j4u.model.http.JHttpLoggingInterceptor;
 import com.qy.j4u.model.http.StringConverterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -25,13 +25,13 @@ public class NetModule {
     @Singleton
     @Provides
     public OkHttpClient provideOkHttpClient() {
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLogger());
+//        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
-                .addInterceptor(loggingInterceptor)
+                .addInterceptor(new JHttpLoggingInterceptor())
                 .build();
     }
 

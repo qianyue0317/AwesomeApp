@@ -6,7 +6,6 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Interceptor;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
-import com.qy.j4u.utils.JLog;
 
 /**
  * AROUTER 的拦截器
@@ -21,6 +20,6 @@ public class ARouterInterceptor implements IInterceptor {
 
     @Override
     public void init(Context context) {
-        JLog.i("init");
+//        JLog.i("init");
     }
 }

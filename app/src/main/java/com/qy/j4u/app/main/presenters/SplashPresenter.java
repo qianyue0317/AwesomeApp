@@ -25,7 +25,6 @@ public class SplashPresenter extends BasePresenter<SplashView> {
      * 通过uuid实现登录
      */
     public void loginWithUUid(String uuid) {
-        JLog.i("BasePresenter", "loginWithUUid");
         getApiService().loginWithUUid(uuid).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .as(bindLifecycle())

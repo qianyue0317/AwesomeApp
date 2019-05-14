@@ -97,7 +97,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        JLog.i(getClass().getSimpleName() + ":onResume");
     }
 
     @Override
