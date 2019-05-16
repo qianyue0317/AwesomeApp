@@ -67,7 +67,7 @@ dependencies {
 
     implementation 'com.google.android:flexbox:1.1.0'
     // 动画库
-    implementation 'com.airbnb.android:lottie:3.0.1'
+    implementation 'com.airbnb.android:lottie:3.0.2'
     // 工具库
     implementation 'com.blankj:utilcodex:1.23.7'
     // 权限工具
@@ -112,8 +112,6 @@ dependencies {
     implementation 'com.qiniu:qiniu-android-sdk:7.3.15'
     // excel实现
     implementation 'cn.zhouchaoyuan:excelpanel:1.0.5'
-    // 日志拦截器
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     // autodisposed
     implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.2.0'
 

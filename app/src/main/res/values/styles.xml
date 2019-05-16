@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@color/background_color</item>
     </style>
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/bg_splash</item>
@@ -19,4 +20,5 @@
         <item name="android:windowNoDisplay">false</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
+
 </resources>

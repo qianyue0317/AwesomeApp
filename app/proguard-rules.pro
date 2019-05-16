@@ -24,3 +24,16 @@
 
 # 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
 # -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+
+
+-keep class org.litepal.** {
+    *;
+}
+
+-keep class * extends org.litepal.crud.DataSupport {
+    *;
+}
+
+-keep class * extends org.litepal.crud.LitePalSupport {
+    *;
+}

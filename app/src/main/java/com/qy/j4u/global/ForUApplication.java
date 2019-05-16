@@ -13,6 +13,7 @@ import com.qy.j4u.pojo.DaoMaster;
 import com.qy.j4u.pojo.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
+import org.litepal.LitePal;
 
 import androidx.multidex.MultiDex;
 import cn.jpush.android.api.JPushInterface;
@@ -49,8 +50,13 @@ public class ForUApplication extends Application {
         initNetModule();
         startCoreService();
         initJPush();
+        initLitePal();
         initGreenDao();
         initToasty();
+    }
+
+    private void initLitePal() {
+        LitePal.initialize(this);
     }
 
     private void initUser() {
