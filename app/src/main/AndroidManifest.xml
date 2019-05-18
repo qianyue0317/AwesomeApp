@@ -60,6 +60,12 @@
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
+        <service
+            android:name=".services.MyService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+
         <activity
             android:name=".app.main.activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -87,10 +93,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".app.programming.activities.EssayListActivity"
-            android:screenOrientation="portrait"/>
-
-
-        <!-- 以下是极光推送需要的 -->
+            android:screenOrientation="portrait"/> <!-- 以下是极光推送需要的 -->
         <!-- Required SDK 核心功能 -->
         <!-- 可配置 android:process 参数将 PushService 放在其他进程中 -->
         <!-- <service -->
@@ -173,8 +176,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
-        </activity>
-        <!-- Required SDK 核心功能 -->
+        </activity> <!-- Required SDK 核心功能 -->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
