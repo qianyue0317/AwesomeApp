@@ -28,7 +28,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     // 语音识别相关的依赖
-    implementation 'ai.api:sdk:1.10.0@aar'
+//    implementation 'ai.api:sdk:1.10.0@aar'
     //    implementation 'ai.api:libai:1.2.1'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'commons-io:commons-io:20030203.000550'
@@ -83,21 +83,21 @@ dependencies {
     implementation 'org.eclipse.californium:californium-core:1.0.7'
 
     // 3d地图
-    implementation 'com.amap.api:3dmap:latest.integration'
+//    implementation 'com.amap.api:3dmap:latest.integration'
     //2D地图
-    implementation 'com.amap.api:map2d:latest.integration'
+//    implementation 'com.amap.api:map2d:latest.integration'
     //导航 暂时不用导航 和3d地图有冲突
 //    implementation 'com.amap.api:navi-3dmap:latest.integration'
     //搜索
-    implementation 'com.amap.api:search:latest.integration'
+//    implementation 'com.amap.api:search:latest.integration'
     //定位
-    implementation 'com.amap.api:location:latest.integration'
+//    implementation 'com.amap.api:location:latest.integration'
     // adapter
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     // 微信mars
-    implementation 'com.tencent.mars:mars-core:1.2.0'
+//    implementation 'com.tencent.mars:mars-core:1.2.0'
     // 腾讯数据库
-    implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
+//    implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
     // 底部导航
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
     // rxbinding
