@@ -1,11 +1,13 @@
 package com.qy.j4u.app.programming.activities;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.qianyue.annotation_api.InstanceState;
 import com.qmuiteam.qmui.widget.QMUIEmptyView;
 import com.qy.j4u.R;
 import com.qy.j4u.app.programming.presenters.EssayListPresenter;
@@ -17,6 +19,7 @@ import com.qy.j4u.global.ForUApplication;
 import com.qy.j4u.global.constants.TransferKeys;
 import com.qy.j4u.model.entity.ITEssayItem;
 import com.qy.j4u.utils.ARouterWrapper;
+import com.qy.j4u.utils.ToastUtil;
 import com.qy.j4u.utils.collectionutil.CollectionKit;
 
 import java.util.ArrayList;
@@ -39,6 +42,11 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
     @Autowired(name = TransferKeys.CATEGORY_ID)
     int mCategoryId;
 
+    @InstanceState(key = "test1")
+    int mTestInstanceState;
+    @InstanceState(key = "testName")
+    String name;
+
     @Override
     protected void daggerInject() {
         DaggerEssayListComponent.builder().essayListModule(new EssayListModule(mView))
@@ -58,14 +66,19 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
 
     @Override
     protected void initVariables() {
+        if (TextUtils.isEmpty(name)) {
+            name = "初始化的name";
+        }else {
+            name = "变化的name";
+        }
         mData = new ArrayList<>();
         mAdapter =
                 new BaseQuickAdapter<ITEssayItem, BaseViewHolder>(android.R.layout.simple_list_item_1, mData) {
-            @Override
-            protected void convert(BaseViewHolder helper, ITEssayItem item) {
-                helper.setText(android.R.id.text1, item.getTitle());
-            }
-        };
+                    @Override
+                    protected void convert(BaseViewHolder helper, ITEssayItem item) {
+                        helper.setText(android.R.id.text1, item.getTitle());
+                    }
+                };
         mAdapter.setOnItemClickListener((adapter, view, position) -> {
             ITEssayItem itEssayItem = mData.get(position);
             ARouterWrapper.build(ARouterWrapper.Route.ESSAY_DETAIL)
@@ -82,6 +95,12 @@ public class EssayListActivity extends MVPBaseActivity<EssayListPresenter> {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mEmptyView.setOnClickListener(v -> loadData());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ToastUtil.showSuccessShort(String.valueOf(name));
     }
 
     @Override

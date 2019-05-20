@@ -1,6 +1,9 @@
 package com.qy.j4u.utils.collectionutil;
 
+import android.util.SparseArray;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,6 +16,14 @@ public class CollectionKit {
 
     public static boolean isEmpty(List list) {
         return list == null || list.isEmpty();
+    }
+
+    public static <T> SparseArray<T> newSparseArray() {
+        return new SparseArray<>();
+    }
+
+    public static <K,V> HashMap<K,V> newHashMap(){
+        return new HashMap<>();
     }
 
 }

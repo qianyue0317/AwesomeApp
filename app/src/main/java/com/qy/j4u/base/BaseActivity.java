@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.j4u.j4uLib.InstanceStateInjector;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.qy.j4u.R;
 import com.qy.j4u.app.main.activities.MainActivity;
@@ -45,6 +45,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        InstanceStateInjector.restore(this, savedInstanceState);
+        if (savedInstanceState != null) {
+            User.initFromLocal();
+        }
         /* ***************注入传递过来的参数************** */
         ARouter.getInstance().inject(this);
         daggerInject();
@@ -77,11 +81,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView(savedInstanceState);
     }
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState);
-        User.initFromLocal();
-    }
 
 
     @Override
@@ -193,8 +192,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        InstanceStateInjector.save(this, outState);
         super.onSaveInstanceState(outState);
         // 异常切换的时候保存本地信息
+        User.save();
     }
 
     @Override

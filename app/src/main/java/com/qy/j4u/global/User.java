@@ -93,6 +93,10 @@ public class User {
         this.it_categories = it_categories;
     }
 
+    /**
+     * 此处本来是打算设计成单例,但是现在不是单例模式,调用
+     * @see User#init(User) 方法可以重新初始化
+     */
     private static class InstanceHolder {
         private static User instance = new User();
     }
@@ -108,6 +112,7 @@ public class User {
      * 将User保存到SharePreferences中
      */
     public static void save() {
+        // TODO: 2019/5/20 这里的token明文保存会不安全,应该采用jni加密进行加密
         if (User.getUser() != null) {
             User user = User.getUser();
             SharePrefTool defaultInstance = SharePrefTool.getDefaultInstance();
@@ -122,6 +127,9 @@ public class User {
         }
     }
 
+    /**
+     * 从本地共享参数缓存中初始化User
+     */
     public static void initFromLocal() {
         SharePrefTool defaultInstance = SharePrefTool.getDefaultInstance();
         User user = new User();

@@ -1,7 +1,7 @@
 package com.qy.j4u;
 
-import com.qianyue.annotation_api.api.FirstAnnotation;
-import com.qianyue.annotation_api.api.InstanceState;
+import com.qianyue.annotation_api.FirstAnnotation;
+import com.qianyue.annotation_api.InstanceState;
 
 @FirstAnnotation(hello = "first yeah")
 public class TestMyAnnotation {

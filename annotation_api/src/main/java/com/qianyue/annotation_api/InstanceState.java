@@ -1,4 +1,4 @@
-package com.qianyue.annotation_api.api;
+package com.qianyue.annotation_api;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
