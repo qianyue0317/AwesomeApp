@@ -192,7 +192,7 @@ package com.qy.j4u.app.programming.activities;
 
 import android.os.Bundle;
 
-public class EssayListActivity$InstanceStateHolder implements InstanceStateInjectorInterface {
+public class EssayListActivity$$InstanceStateHolder implements InstanceStateInjectorInterface {
 
 
     public void save(Bundle savedInstanceState,Object activity) {

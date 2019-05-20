@@ -30,7 +30,7 @@ public class InstanceStateInjector {
             try {
                 String className =
                         aClass.getCanonicalName() + "$$InstanceStateHolder";
-                Class<? extends InstanceStateInjectorInterface> clz =
+                @SuppressWarnings("unchecked") Class<? extends InstanceStateInjectorInterface> clz =
                         (Class<? extends InstanceStateInjectorInterface>) Class.forName(className);
                 Constructor<? extends InstanceStateInjectorInterface> constructor =
                         clz.getConstructor();
