@@ -1,1 +1,1 @@
-include ':app', ':easeui', ':buildSrc', ':annotationLib', ':annotation_api',':j4ulib'
+include ':app', ':easeui', ':buildSrc', ':j4u-compiler', ':j4u-annotations', ':j4ulib'
