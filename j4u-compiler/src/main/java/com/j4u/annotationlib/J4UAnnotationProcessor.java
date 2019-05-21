@@ -134,11 +134,11 @@ public class J4UAnnotationProcessor extends AbstractProcessor {
                 String s = ((VariableElement) e).asType().toString();
                 saveMethodBuilder.addStatement("savedInstanceState.put$L($S, $L)", getTypeName(s),
                         instanceState.key(),
-                        String.format("((%s)activity).%s", enclosingElement.getQualifiedName(),
+                        String.format("((%s)activity).%s", enclosingElement.getSimpleName(),
                                 e.getSimpleName()));
                 restoreMethodBuilder.addStatement("(($L)activity).$L " +
                                 "= savedInstanceState.get$L($S)",
-                        enclosingElement.getQualifiedName(), e.getSimpleName(), getTypeName(s)
+                        enclosingElement.getSimpleName(), e.getSimpleName(), getTypeName(s)
                         , instanceState.key());
             }
             assert enclosingElement != null;
