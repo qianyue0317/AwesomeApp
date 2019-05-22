@@ -11,7 +11,7 @@ import com.qy.j4u.global.User;
 import com.qy.j4u.global.constants.TransferKeys;
 import com.qy.j4u.model.entity.ITCategoryItem;
 import com.qy.j4u.utils.ARouterWrapper;
-import com.qy.j4u.widget.SlideRecyclerView;
+import com.qy.j4u.widget.views.SlideRecyclerView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
