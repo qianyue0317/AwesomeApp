@@ -2,6 +2,8 @@ package com.qy.j4u.base;
 
 import android.os.Bundle;
 
+import com.qy.j4u.utils.JLog;
+
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
@@ -11,6 +13,12 @@ import androidx.annotation.Nullable;
  * @param <P> Presenter的泛型
  */
 public abstract class MVPBaseActivity<P extends BasePresenter> extends BaseActivity {
+
+    public MVPBaseActivity() {
+        super();
+        JLog.i("MVPBaseActivity","构造方法");
+    }
+
 
     @Inject
     protected P mPresenter;

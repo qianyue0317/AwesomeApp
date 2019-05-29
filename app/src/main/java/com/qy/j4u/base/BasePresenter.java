@@ -65,12 +65,10 @@ public class BasePresenter<V extends BaseView> implements IPresenter {
     @Override
     public void onCreate(@NotNull LifecycleOwner owner) {
         mLifecycleOwner = owner;
-//        JLog.i("BasePresenter", "onCreate:" + owner + "  " + getClass().getName());
     }
 
     @Override
     public void onDestroy(@NotNull LifecycleOwner owner) {
-//        JLog.i("BasePresenter", "onDestroy:" + getClass().getName());
         if (mRealView != null) {
             mRealView.clear();
             mRealView = null;
@@ -83,8 +81,6 @@ public class BasePresenter<V extends BaseView> implements IPresenter {
 
     @Override
     public void onLifecycleChanged(@NotNull LifecycleOwner owner, @NotNull Lifecycle.Event event) {
-//        JLog.i("BasePresenter", "onLifecycleChanged:" + getClass().getName() + " " + event.name
-//        ());
     }
 
 

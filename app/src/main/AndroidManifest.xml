@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.qy.j4u"
-    tools:ignore="MissingLeanbackLauncher">
+<manifest package="com.qy.j4u"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          tools:ignore="MissingLeanbackLauncher">
 
     <permission
         android:name="com.qy.j4u.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
+        android:protectionLevel="signature"/>
 
     <uses-feature
         android:name="android.hardware.microphone"
-        android:required="false" />
+        android:required="false"/>
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" />
+        android:required="false"/>
     <uses-feature
         android:name="android.software.leanback"
-        android:required="false" />
+        android:required="false"/>
     <uses-feature
         android:name="android.hardware.touchscreen"
-        android:required="false" />
+        android:required="false"/>
     <uses-feature
         android:name="android.hardware.location.gps"
-        android:required="false" />
+        android:required="false"/>
 
-    <uses-permission android:name="com.qy.j4u.permission.JPUSH_MESSAGE" /> <!-- Required -->
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.qy.j4u.permission.JPUSH_MESSAGE"/> <!-- Required -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission
         android:name="android.permission.ACCESS_MOCK_LOCATION"
-        tools:ignore="MockLocation,ProtectedPermissions" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        tools:ignore="MockLocation,ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission
         android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在 6.0 系统上的层叠窗口权限 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/> <!-- 用于开启 debug 版本的应用在 6.0 系统上的层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".global.SophixStubApplication"
@@ -61,15 +61,21 @@
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
+        <service
+            android:name=".services.KeepService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+
         <meta-data
             android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="26470680-1" />
+            android:value="26470680-1"/>
         <meta-data
             android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="7791c10d58e6e0263df85837d4e7f615" />
+            android:value="7791c10d58e6e0263df85837d4e7f615"/>
         <meta-data
             android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDT2wZFwyc/m962jy/3woIrMWE6UtxQBfEnILjlwcnlGAaQLy2Cavdw8/XhUuwYd6VwcvKYNQgfFAfMkGcUJXUwml5dFmlfJBc87DqxrnxlfPaCuyOkBrYQ+pUYAOmwEE3Mgi+picwoS30zc2fHeb45DYotOahL/wMxDunxfbJAT65X9x5LY24hlq6SZ6P0WOJGv6zSChjjsdgNEr5aX7MR1g/eD+q6WKdVLLNyqXrOP12oMUF+7oCYrOWAcGeF500ljzapIlGr0Fh4dztMbQD5d9QGhZncH/qdO8EwH8R5uGiYGXe5NmwO4r/aWc1Ft0V1IvEFSMOKBetpjkt5K4LLAgMBAAECggEBAJ8b68YRHzUCl218dIYbKy/NUjw/Zv8it06voK3NsRfBx4waIo/ETjoivxOO94oYscOWUORHT+YnYQQdn4zd5Pmvthcrcc/mhx1WPW6coQiHpYvhiI70C2ENEVSJuvhkBkoFrE4kE5RfvZQapGKH6Hlo1dHJb8BDsd3yWXjo8iqhT0MAG8lDkN7A5mjsfzZL2dOwDdmHAaIkOAsYkVDSVdwqjufdTMl7c8dZ6p31H3XxnHoO42/ETLHVkNPFbhHS9nb4B1SW9EvUxZTzWKJb8UmPymz+57wOHIFEGqX51tpHWSqVd/nRzwYNC3NP0KF+69q+ZjIoCZK/Ohkv4jsv9yECgYEA8VLLZ+TQQy2IlI+fEod+sa+dWnpX/hrqSiPda1y7BhVoZDLRGxIoLIkRAAdn98yGqFbpg5rEA1UzWK+lQBs49SS+Ip4QQjjG35p+QEXyHOFxfQxn+qk9brcLtHqS4+Fz1AnEnt9vm8WtUnlFBliZidX3Q5srt2yu6zRYD5xMIm0CgYEA4L1wn5zQ0kW0KFCedX2wJKak/K6XhVGEqAY05+xgltuYvab6tufpl44vXylD5Zq2bZB3ivf+fDupTbAJFF0XHS2918pAoxsHN8gPgO9yR51wUXWwFQU1mGfr9PCHVsjrFP5EW0czA4Hr6r7fNKSCtg7rwsx3PIh6p8lPI9FLNxcCgYEAnHdOIuKclbHkKE6mmOD5KEPxBkTk4ICa/88ZNQ8+w8cFlFHOenrfSWDlgNtMccJOXL9dUFL8XBzV2d6oilQcLfXQwakyaX1elIQa75lqTYduieGNWVx51FsiX7ZJny8CZqyeq1O7jYgxxJOUSXUQt+nfFBp70cXJ8/5QSm7QflECgYALwj2zTDws1FLRzS4NTa86q7F0OxpYcmRzeieoftiq7AB449S4Xzf8owbdfsY7rDWhU+69Sa56B5EbLHu9IgXElBEbykxJfG+LPp95Co47KwSmbnbxEp20RLO21CLwqoCKT6d58ya7J0AVvzjkgzsHlY5GWfZfJ3DreH/4isnZrwKBgQCJ9G/TzBYBFJWBAsW9yp7OGYLv3Q13Z6itFHw+PnLriVQbYnS1M1cz+kTV/qUDCS6Izvo5EQ7gAdwRAMjNAOG3ut7k8MQ9EjENsnihgY/Hq4XkeN+RgxJzGlAUuHOJETVyEbEo4ZXa4MhEZ7mT3cD3mAGWKRITLPI/fbkYtspzmA==" />
+            android:value="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDT2wZFwyc/m962jy/3woIrMWE6UtxQBfEnILjlwcnlGAaQLy2Cavdw8/XhUuwYd6VwcvKYNQgfFAfMkGcUJXUwml5dFmlfJBc87DqxrnxlfPaCuyOkBrYQ+pUYAOmwEE3Mgi+picwoS30zc2fHeb45DYotOahL/wMxDunxfbJAT65X9x5LY24hlq6SZ6P0WOJGv6zSChjjsdgNEr5aX7MR1g/eD+q6WKdVLLNyqXrOP12oMUF+7oCYrOWAcGeF500ljzapIlGr0Fh4dztMbQD5d9QGhZncH/qdO8EwH8R5uGiYGXe5NmwO4r/aWc1Ft0V1IvEFSMOKBetpjkt5K4LLAgMBAAECggEBAJ8b68YRHzUCl218dIYbKy/NUjw/Zv8it06voK3NsRfBx4waIo/ETjoivxOO94oYscOWUORHT+YnYQQdn4zd5Pmvthcrcc/mhx1WPW6coQiHpYvhiI70C2ENEVSJuvhkBkoFrE4kE5RfvZQapGKH6Hlo1dHJb8BDsd3yWXjo8iqhT0MAG8lDkN7A5mjsfzZL2dOwDdmHAaIkOAsYkVDSVdwqjufdTMl7c8dZ6p31H3XxnHoO42/ETLHVkNPFbhHS9nb4B1SW9EvUxZTzWKJb8UmPymz+57wOHIFEGqX51tpHWSqVd/nRzwYNC3NP0KF+69q+ZjIoCZK/Ohkv4jsv9yECgYEA8VLLZ+TQQy2IlI+fEod+sa+dWnpX/hrqSiPda1y7BhVoZDLRGxIoLIkRAAdn98yGqFbpg5rEA1UzWK+lQBs49SS+Ip4QQjjG35p+QEXyHOFxfQxn+qk9brcLtHqS4+Fz1AnEnt9vm8WtUnlFBliZidX3Q5srt2yu6zRYD5xMIm0CgYEA4L1wn5zQ0kW0KFCedX2wJKak/K6XhVGEqAY05+xgltuYvab6tufpl44vXylD5Zq2bZB3ivf+fDupTbAJFF0XHS2918pAoxsHN8gPgO9yR51wUXWwFQU1mGfr9PCHVsjrFP5EW0czA4Hr6r7fNKSCtg7rwsx3PIh6p8lPI9FLNxcCgYEAnHdOIuKclbHkKE6mmOD5KEPxBkTk4ICa/88ZNQ8+w8cFlFHOenrfSWDlgNtMccJOXL9dUFL8XBzV2d6oilQcLfXQwakyaX1elIQa75lqTYduieGNWVx51FsiX7ZJny8CZqyeq1O7jYgxxJOUSXUQt+nfFBp70cXJ8/5QSm7QflECgYALwj2zTDws1FLRzS4NTa86q7F0OxpYcmRzeieoftiq7AB449S4Xzf8owbdfsY7rDWhU+69Sa56B5EbLHu9IgXElBEbykxJfG+LPp95Co47KwSmbnbxEp20RLO21CLwqoCKT6d58ya7J0AVvzjkgzsHlY5GWfZfJ3DreH/4isnZrwKBgQCJ9G/TzBYBFJWBAsW9yp7OGYLv3Q13Z6itFHw+PnLriVQbYnS1M1cz+kTV/qUDCS6Izvo5EQ7gAdwRAMjNAOG3ut7k8MQ9EjENsnihgY/Hq4XkeN+RgxJzGlAUuHOJETVyEbEo4ZXa4MhEZ7mT3cD3mAGWKRITLPI/fbkYtspzmA=="/>
 
         <service
             android:name=".services.MyService"
@@ -102,12 +108,7 @@
         <activity
             android:name=".app.programming.activities.EssayDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".app.programming.activities.EssayListActivity"
-            />
-
-
-        <!-- 以下是极光推送需要的 -->
+        <activity android:name=".app.programming.activities.EssayListActivity"/> <!-- 以下是极光推送需要的 -->
         <!-- Required SDK 核心功能 -->
         <!-- 可配置 android:process 参数将 PushService 放在其他进程中 -->
         <!-- <service -->
@@ -145,28 +146,28 @@
             android:name="cn.jpush.android.service.DownloadProvider"
             android:authorities="com.qy.j4u.DownloadProvider"
             android:exported="true"
-            tools:ignore="ExportedContentProvider" /> <!-- Required SDK 核心功能 -->
+            tools:ignore="ExportedContentProvider"/> <!-- Required SDK 核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
             tools:ignore="ExportedReceiver">
             <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
 
                 <category android:name="com.qy.j4u"/>
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.USER_PRESENT"/>
                 <action
                     android:name="android.net.conn.CONNECTIVITY_CHANGE"
-                    tools:ignore="BatteryLife" />
+                    tools:ignore="BatteryLife"/>
             </intent-filter>
             <!-- Optional -->
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
 
-                <data android:scheme="package" />
+                <data android:scheme="package"/>
             </intent-filter>
         </receiver> <!-- Required SDK 核心功能 -->
         <activity
@@ -175,10 +176,10 @@
             android:exported="false"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <action android:name="cn.jpush.android.ui.PushActivity"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.qy.j4u" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.qy.j4u"/>
             </intent-filter>
         </activity> <!-- SDK 核心功能 -->
         <activity
@@ -187,11 +188,10 @@
             android:exported="false"
             android:theme="@style/MyDialogStyle">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.qy.j4u" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.qy.j4u"/>
             </intent-filter>
-        </activity>
-        <!-- Required SDK 核心功能 -->
+        </activity> <!-- Required SDK 核心功能 -->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"

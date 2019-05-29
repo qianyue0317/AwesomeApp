@@ -28,12 +28,12 @@ void child_listen_socket();
 //socket 实现进程保活，除非卸载
 #include "native_lib.h"
 
-const char *PATH = "/data/data/com.example.chen.servicealivetest/keep_alive.socket";
+const char *PATH = "/data/data/com.qy.j4u.servicealivetest/keep_alive.socket";
 const char *userId;
 int m_client_fd;
 //该函数用来创建服务端socket，并实现监听
 extern "C"
-JNIEXPORT void JNICALL Java_com_example_chen_servicealivetest_KeepService_createWatcher(
+JNIEXPORT void JNICALL Java_com_qy_j4u_services_KeepService_createWatcher(
         JNIEnv *env,
         jobject thiz, jstring userId_) {
     userId = env->GetStringUTFChars(userId_, 0);
@@ -42,14 +42,18 @@ JNIEXPORT void JNICALL Java_com_example_chen_servicealivetest_KeepService_create
     pid_t pid = fork();
     //新建进程失败
     if (pid < 0) {
+        LOGI("创建进程失败");
+    }
+    //子进程
+    else if (pid == 0) {
+        LOGI("pid:%d", getpid());
 
     }
-        //子进程
-    else if (pid == 0) {
+    //父进程返回新建的子进程的pid
+    else if (pid > 0) {
+        LOGI("父进程返回的%d", pid);
         child_prepare_socket();
     }
-        //父进程返回新建的子进程的pid
-    else if (pid > 0) {}
     env->ReleaseStringUTFChars(userId_, userId);
 }
 
@@ -62,9 +66,9 @@ void child_prepare_socket() {
 int child_create_socket() {
     LOGI("开始创建服务端socket");
     //AF_LOCAL:本地类型socket，SOCK_STREAM：面向tcp的流，参数0，代表自己选择网络协议
-    int sfd = socket(AF_LOCAL, SOCK_STREAM, 0);
+    int sfd = socket(AF_LOCAL, SOCK_STREAM | SOCK_CLOEXEC, 0);
     unlink(PATH);
-    struct sockaddr_un addr;
+    struct sockaddr_un addr{};
     memset(&addr, 0, sizeof(sockaddr_un));
     addr.sun_family = AF_LOCAL;
     strcpy(addr.sun_path, PATH);
@@ -76,7 +80,7 @@ int child_create_socket() {
     listen(sfd, 5);
     int coonfd = 0;
     //监听客户端的连接
-    while (1) {
+    while (true) {
         //没有客户端请求到来，会阻塞直到一个请求的到来，返回客户端地址
         if ((coonfd = accept(sfd, NULL, NULL)) < 0) {
             if (errno == EINTR) {
@@ -97,7 +101,7 @@ void child_listen_socket() {
     LOGI("服务端监听客户端的消息");
     fd_set fds;
     struct timeval timeout = {10, 0};
-    while (1) {
+    while (true) {
         //使用select I/O多路复用
         //所有位置0
         FD_ZERO(&fds);
@@ -135,10 +139,10 @@ void child_listen_socket() {
 //该函数用来创建客户端socket，连接服务端
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_chen_servicealivetest_KeepService_connectServer(JNIEnv *env, jobject instance) {
+Java_com_qy_j4u_services_KeepService_connectServer(JNIEnv *env, jobject instance) {
     int socketfd;
     struct sockaddr_un addr;
-    while (1) {
+    while (true) {
         socketfd = socket(AF_LOCAL, SOCK_STREAM, 0);
         if (socketfd < 0) {
             LOGE("客户端新建创建失败");

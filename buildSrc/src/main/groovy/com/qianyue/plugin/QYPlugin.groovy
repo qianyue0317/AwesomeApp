@@ -7,7 +7,7 @@ class QYPlugin implements Plugin<Project>{
 
     @Override
     void apply(Project project) {
-        println("钱跃plugin")
+        println("应用到的工程名称:${project.getName()}")
     }
 
 }

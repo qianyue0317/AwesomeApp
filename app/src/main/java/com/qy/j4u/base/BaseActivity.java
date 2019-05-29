@@ -29,13 +29,12 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
-import io.reactivex.functions.Consumer;
-import kotlin.Unit;
 
 /**
  * Activity的基类
  * Created by qy on 2016/11/2. modified by qy on 2019/05/10
  */
+@SuppressWarnings("unused")
 public abstract class BaseActivity extends AppCompatActivity {
 
 
@@ -82,11 +81,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onStart() {
         super.onStart();
         try {
+            /* 由于在BasePresenter中mLifecycleOwner变量的赋值是在onCreate中进行的,而如果
+             presenter加载数据在Activity的onCreate中调用BasePresenter中的mLifecycleOwner
+              是还没有赋值的 故将加载数据放到了Activity的onStart方法中了 */
             loadData();
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * rxjava observer绑定生命周期
+     * rxJava observer绑定生命周期
      */
     protected <T> AutoDisposeConverter<T> bindLifecycle() {
         return RxLifecycleUtils.bindLifecycle(this);
@@ -235,7 +236,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 透明状态栏和导航栏
      */
-    protected void transparentNaviAndStatus() {
+    protected void transparentNavAndStatus() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             //透明状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -244,7 +245,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void transparentNavi() {
+    protected void transparentNav() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             //透明导航栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -268,12 +269,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void setOnClickSolveShake(final View view, final View.OnClickListener
             onClickListener) {
         //noinspection ResultOfMethodCallIgnored
-        RxView.clicks(view).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe(new Consumer<Unit>() {
-            @Override
-            public void accept(Unit unit) throws Exception {
-                onClickListener.onClick(view);
-            }
-        });
+        RxView.clicks(view).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe(unit -> onClickListener.onClick(view));
     }
 
 
@@ -315,7 +311,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 加载数据,需要presenter监听activity和fragment生命周期,loadData放在onCreate中的话BasePresenter中
-     * 的mLifecycleOwner初始化要滞后于loadData,会出现异常.故放在onstart中
+     * 的mLifecycleOwner初始化要滞后于loadData,会出现异常.故放在onStart中
      */
     protected abstract void loadData();
 

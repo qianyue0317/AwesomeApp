@@ -1,9 +1,12 @@
 package com.qy.j4u.global;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.qy.j4u.di.components.DaggerNetComponent;
@@ -11,11 +14,15 @@ import com.qy.j4u.di.components.NetComponent;
 import com.qy.j4u.global.constants.Constants;
 import com.qy.j4u.pojo.DaoMaster;
 import com.qy.j4u.pojo.DaoSession;
+import com.qy.j4u.utils.JLog;
 
 import org.greenrobot.greendao.database.Database;
 import org.litepal.LitePal;
 
-import androidx.multidex.MultiDex;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import cn.jpush.android.api.JPushInterface;
 import es.dmoral.toasty.Toasty;
 
@@ -23,12 +30,16 @@ import es.dmoral.toasty.Toasty;
  * 项目的Application类
  * Created by abc on 2016/11/2.
  */
+@SuppressLint("Registered")
 public class ForUApplication extends Application {
 
     private static ForUApplication sInstance;
     private DaoSession mDaoSession;
     private NetComponent mNetComponent;
 
+    static {
+        System.loadLibrary("native-lib");
+    }
 
     public static ForUApplication getInstance() {
         return sInstance;
@@ -42,6 +53,7 @@ public class ForUApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initHookActivityThreadHandler();
         sInstance = this;
         initUser();
         initActivityLife();
@@ -52,6 +64,45 @@ public class ForUApplication extends Application {
         initLitePal();
         initGreenDao();
         initToasty();
+    }
+
+
+    private void initHookActivityThreadHandler() {
+        try {
+            @SuppressLint("PrivateApi") Class<?> atClass = Class.forName("android.app" +
+                    ".ActivityThread");
+            Method currentActivityThread = atClass.getDeclaredMethod("currentActivityThread");
+            currentActivityThread.setAccessible(true);
+            Object activityThread = currentActivityThread.invoke(null);
+            Field mH = atClass.getDeclaredField("mH");
+            mH.setAccessible(true);
+            Handler handler = (Handler) mH.get(activityThread);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class HookHandler extends Handler {
+        private Handler mResourceHandler;
+
+        public HookHandler(Handler resourceHander) {
+            this.mResourceHandler = resourceHander;
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            JLog.i("HookHandler", "mH的消息:" + msg);
+            mResourceHandler.handleMessage(msg);
+        }
     }
 
     private void initLitePal() {
