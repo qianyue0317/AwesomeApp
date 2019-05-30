@@ -122,4 +122,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // 丰富的recyclerview
     implementation 'com.marshalchen.ultimaterecyclerview:library:0.7.6'
+    // recyclerView 条目动画
+    implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
 }

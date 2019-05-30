@@ -47,12 +47,11 @@ JNIEXPORT void JNICALL Java_com_qy_j4u_services_KeepService_createWatcher(
     //子进程
     else if (pid == 0) {
         LOGI("pid:%d", getpid());
-
+        child_prepare_socket();
     }
     //父进程返回新建的子进程的pid
     else if (pid > 0) {
         LOGI("父进程返回的%d", pid);
-        child_prepare_socket();
     }
     env->ReleaseStringUTFChars(userId_, userId);
 }
@@ -68,11 +67,11 @@ int child_create_socket() {
     //AF_LOCAL:本地类型socket，SOCK_STREAM：面向tcp的流，参数0，代表自己选择网络协议
     int sfd = socket(AF_LOCAL, SOCK_STREAM | SOCK_CLOEXEC, 0);
     unlink(PATH);
-    struct sockaddr_un addr{};
-    memset(&addr, 0, sizeof(sockaddr_un));
-    addr.sun_family = AF_LOCAL;
-    strcpy(addr.sun_path, PATH);
-    if (bind(sfd, reinterpret_cast<const sockaddr *>(&addr), sizeof(sockaddr_un)) < 0) {
+    struct sockaddr addr{};
+    memset(&addr, 0, sizeof(sockaddr));
+    addr.sa_family = AF_LOCAL;
+    strcpy(addr.sa_data, PATH);
+    if (bind(sfd, reinterpret_cast<const sockaddr *>(&addr), sizeof(sockaddr)) < 0) {
         LOGE("服务端绑定socket出错");
         return 0;
     }

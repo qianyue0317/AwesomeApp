@@ -8,7 +8,6 @@
     单元测试,注意使用手势监听,ViewDragHelper,注意使用wifi,数据网络接口,还有蓝牙,摄像头,以及语音
     api,usb数据交换,定位,短信拦截,电话监听.流量统计.
     注意使用位运算符
-    注意使用设计模式,单例模式使用静态内部类方式
     最好涉及到插件化(热修复),混合开发,h5和原生交互开发
     页面的效果采用Yalantis的效果
     混淆打包,加固加密
@@ -36,8 +35,7 @@
     缓存:ASimpleCache,AndroidVideoCache,GreenDao,OrmLite
 
     控件:PhotoView(照片)SwipeBackLayout,ShortcutBadger(桌面图标消息提醒),Android-Bootstrap,
-    日期android-times-square,ToggleButton,cropper(裁剪图片),AndroidTagGroup(多选流式布局)
-    ,Carbon(阴影效果等),FoldableLayout(折叠效果),android-circlebutton(动画效果的圆形button)
+    日期CalendarView,SwitchButton,cropper(裁剪图片),FoldableLayout(折叠效果),
     ,NineGridImageView(九宫格图片),WheelPicker(滚动选择)
     Fancybuttons(各种按钮),AndroidAudioRecorder,AppIntro(导航页),BlurredGridMenu(模糊)
     3dTagCloudAndroid(3d动态标签) LoopRotarySwitch(旋转木马效果),Android-StickyNavLayout(粘性头部)
@@ -55,8 +53,7 @@
     UltimateRecyclerView    Android-SpinKit LoadingView WaveSwipeRefreshLayout
      AVLoadingIndicatorView
 
-    插件化框架:DroidPlugin(360) *tinker*(腾讯) AndFix(热修复,阿里) 热修复:RocooFix dexposed    nuwa2(大众点评热修复框架)
-    语音识别:api-ai-android-sdk
+    插件化框架:DroidPlugin(360) *tinker*(腾讯) sophix(热修复,阿里)
     动画:Material-Animations(Activity的切换),recyclerview-animators(RecyclerView动画)RecyclerViewItemAnimators animate
     AndroidViewAnimations  LikeAnimation(点赞,收藏)  AnimatedCircleLoadingView(加载)
     FragmentAnimations(切换效果),Android-ConvenientBanner(轮播图) XCL-Charts(表格)
@@ -71,16 +68,17 @@
     多线程下载:MultiThreadDownloader
 
 使用框架:
-    注入框架:ButterKnife
+    注入框架:ButterKnife dagger2
     网络请求:Retrofit + RxJava
-    数据库框架:GreenDao
-    图片加载框架:Fresco
+    数据库框架:litepal
+    图片加载框架:Glide
     注意项目中需要对这些框架进行二次封装
 
 命名规范:
     包名:驼峰式,首字母小写,尽量见名知义,例如:presenterImpl;
     类名:驼峰式,首字母大写,见名知义,采取 功能+组件名称 的形式 ,例如 LoginActivity(登录+活动);
     变量名:
+        静态变量:s前缀,驼峰法, 例: sLoginUrl;
         静态常量:全部大写,见名知义,单词间用"_"分隔,例:LOGIN_URL;
         实例变量:驼峰式,首字母为"m",后接 功能+类型名(缩写) 例:mLoginBtn;
         本地变量:驼峰式, 见名知义即可;
@@ -96,7 +94,6 @@
 
 
 控件(页面)风格:
-    整体采用Design包中的控件
     统一Dialog风格,与主题颜色类似
 
 
