@@ -19,3 +19,5 @@ LinkedList 的优势在于"随机"  如果是直接在后边插入 和ArrayList�
 剪贴板
 
 Javassist
+
+即时通讯解决方案 https://github.com/wildfirechat/android-chat.git

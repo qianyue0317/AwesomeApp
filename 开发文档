@@ -23,18 +23,16 @@
     constants:常量类
 
 用到的第三方SDK:
-    视频框架:JieCaoVideoPlayer,Vitamio,VideoPlayerManager(视频列表)
+    视频框架:ExoPlayer,VideoPlayerManager(视频列表)
     音频框架:android-UniversalMusicPlayer,WaveInApp,RxAndroidAudio,ExoMedia,MusicBobber
     usb:usb-serial-for-android,
-    监听网络状态:NetworkEvents
     工具包:android-common
     动画库:BaseAnimation
     地图:百度地图,高德地图
-    蓝牙:android-lite-bluetoothLE
-    图片加载:Fresco,Glide,Picasso
-    缓存:ASimpleCache,AndroidVideoCache,GreenDao,OrmLite
+    图片加载:Glide
+    缓存:AndroidVideoCache,LitePal
 
-    控件:PhotoView(照片)SwipeBackLayout,ShortcutBadger(桌面图标消息提醒),Android-Bootstrap,
+    控件:SwipeBackLayout(侧滑退出)ShortcutBadger(桌面图标消息提醒),Android-Bootstrap,
     日期CalendarView,SwitchButton,cropper(裁剪图片),FoldableLayout(折叠效果),
     ,NineGridImageView(九宫格图片),WheelPicker(滚动选择)
     Fancybuttons(各种按钮),AndroidAudioRecorder,AppIntro(导航页),BlurredGridMenu(模糊)

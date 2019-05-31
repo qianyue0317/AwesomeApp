@@ -124,4 +124,18 @@ dependencies {
     implementation 'com.marshalchen.ultimaterecyclerview:library:0.7.6'
     // recyclerView 条目动画
     implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
+    //基础工具库
+    implementation "com.github.vondear.RxTool:RxKit:2.3.9"
+
+    //UI库
+    implementation "com.github.vondear.RxTool:RxUI:2.3.9"
+
+    //相机库
+    implementation "com.github.vondear.RxTool:RxCamera:2.3.9"
+
+    //功能库（Zxing扫描与生成二维码条形码 支付宝 微信）
+    implementation "com.github.vondear.RxTool:RxFeature:2.3.9"
+
+    //ArcGis For Android工具库（API：100.1以上版本）
+    implementation "com.github.vondear.RxTool:RxArcGisKit:2.3.9"
 }

@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+/**
+ * 控件最上边的基类
+ */
 public class BaseButton extends AppCompatButton {
     public BaseButton(Context context) {
         super(context);
