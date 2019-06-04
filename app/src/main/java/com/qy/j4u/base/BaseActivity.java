@@ -21,6 +21,8 @@ import com.qy.j4u.app.main.activities.SplashActivity;
 import com.qy.j4u.global.User;
 import com.qy.j4u.utils.KeyboardTool;
 import com.qy.j4u.utils.RxLifecycleUtils;
+import com.qy.j4u.widget.dialog.DefaultLoading;
+import com.qy.j4u.widget.dialog.LoadingInterface;
 import com.uber.autodispose.AutoDisposeConverter;
 
 import java.util.concurrent.TimeUnit;
@@ -37,14 +39,14 @@ import butterknife.ButterKnife;
 @SuppressWarnings("unused")
 public abstract class BaseActivity extends AppCompatActivity {
 
-
     private boolean mNeedHideKeyboard = true;
-
+    private LoadingInterface mLoadingInterface;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         InstanceStateInjector.restore(this, savedInstanceState);
+        mLoadingInterface = new DefaultLoading();
         if (savedInstanceState != null) {
             User.initFromLocal();
         }
@@ -80,6 +82,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView(savedInstanceState);
     }
 
+    public void showLoading(String content,boolean cancelable) {
+        mLoadingInterface.show(this, content, cancelable);
+    }
+
+    public void hide() {
+        mLoadingInterface.hide();
+    }
 
     @Override
     protected void onStart() {
@@ -183,6 +192,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mLoadingInterface.dismiss();
     }
 
 

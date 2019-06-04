@@ -134,8 +134,8 @@ dependencies {
     implementation "com.github.vondear.RxTool:RxCamera:2.3.9"
 
     //功能库（Zxing扫描与生成二维码条形码 支付宝 微信）
-    implementation "com.github.vondear.RxTool:RxFeature:2.3.9"
+    //implementation "com.github.vondear.RxTool:RxFeature:2.3.9"
 
     //ArcGis For Android工具库（API：100.1以上版本）
-    implementation "com.github.vondear.RxTool:RxArcGisKit:2.3.9"
+    //implementation "com.github.vondear.RxTool:RxArcGisKit:2.3.9"
 }

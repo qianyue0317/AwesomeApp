@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.qy.j4u.R;
 
-public class BigTextView extends androidx.appcompat.widget.AppCompatTextView {
+public class BigTextView extends BaseTextView {
     public BigTextView(Context context) {
         super(context);
     }

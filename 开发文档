@@ -112,3 +112,7 @@
 写代码是业务逻辑要理清楚,清晰的条理
 
 抓取生活中常用网站或者app的接口 集成到一个app中
+
+按键抖动的处理不应该放在BaseActivity中
+
+edittext inputFilter的编写

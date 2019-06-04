@@ -12,7 +12,6 @@ import com.qy.j4u.base.BaseActivity;
 import com.qy.j4u.di.components.DaggerSplashComponent;
 import com.qy.j4u.di.modules.SplashModule;
 import com.qy.j4u.global.ForUApplication;
-import com.qy.j4u.services.KeepService;
 import com.qy.j4u.utils.ARouterWrapper;
 import com.qy.j4u.utils.JLog;
 import com.qy.j4u.utils.JUtil;
@@ -42,7 +41,7 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
             JLog.d("MainActivity", "onCreate intent flag FLAG_ACTIVITY_BROUGHT_TO_FRONT");
             finish();
         }
-        startService(new Intent(this, KeepService.class));
+//        startService(new Intent(this, KeepService.class));
     }
 
     @Override
