@@ -138,4 +138,12 @@ dependencies {
 
     //ArcGis For Android工具库（API：100.1以上版本）
     //implementation "com.github.vondear.RxTool:RxArcGisKit:2.3.9"
+
+
+    //For Lifecycles, LiveData, and ViewModel
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
+
+    // gt调试工具
+    implementation 'com.tencent.wstt.gt:gt-sdk:3.1.0'
 }

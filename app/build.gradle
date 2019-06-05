@@ -16,6 +16,9 @@ kapt {
 android {
     compileSdkVersion androidBuild['myCompileSdkVersion']
     buildToolsVersion androidBuild['myBuildToolsVersion']
+    dataBinding {
+        enabled =true
+    }
     defaultConfig {
         applicationId "com.qy.j4u"
         minSdkVersion androidBuild['myMinSdkVersion']

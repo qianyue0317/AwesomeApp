@@ -3,7 +3,7 @@ project('app').ext {
     androidBuild = [
             myCompileSdkVersion: 28,
             myBuildToolsVersion: '28.0.3',
-            myMinSdkVersion    : 17,
+            myMinSdkVersion    : 21,
             myTargetSdkVersion : 28
     ]
     // 应用相关配置

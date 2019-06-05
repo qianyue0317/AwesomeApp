@@ -23,3 +23,9 @@ Javassist
 即时通讯解决方案 https://github.com/wildfirechat/android-chat.git
 
 写一个朋友圈九宫格的图片展示控件
+
+livedatabus
+
+mvvm
+
+视频播放 JiaoZiVideoPlayer
