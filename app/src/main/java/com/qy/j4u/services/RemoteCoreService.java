@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.os.RemoteException;
-import androidx.annotation.Nullable;
 
-import com.qy.j4u.utils.JLog;
+import com.qy.j4u.lib.JLog;
+
+import androidx.annotation.Nullable;
 
 /**
  * 远程进程中的核心服务, 可通过监听屏幕

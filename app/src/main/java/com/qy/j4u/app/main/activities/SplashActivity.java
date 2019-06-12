@@ -12,8 +12,8 @@ import com.qy.j4u.base.BaseActivity;
 import com.qy.j4u.di.components.DaggerSplashComponent;
 import com.qy.j4u.di.modules.SplashModule;
 import com.qy.j4u.global.ForUApplication;
+import com.qy.j4u.lib.JLog;
 import com.qy.j4u.utils.ARouterWrapper;
-import com.qy.j4u.utils.JLog;
 import com.qy.j4u.utils.JUtil;
 
 import javax.inject.Inject;

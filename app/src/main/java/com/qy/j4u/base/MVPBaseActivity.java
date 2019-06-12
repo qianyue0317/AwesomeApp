@@ -2,7 +2,7 @@ package com.qy.j4u.base;
 
 import android.os.Bundle;
 
-import com.qy.j4u.utils.JLog;
+import com.qy.j4u.lib.JLog;
 
 import javax.inject.Inject;
 

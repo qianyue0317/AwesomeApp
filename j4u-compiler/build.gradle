@@ -10,3 +10,6 @@ dependencies {
 
 sourceCompatibility = "7"
 targetCompatibility = "7"
+
+apply from:'maven_push.gradle'
+apply from:'nexus_push.gradle'

@@ -24,9 +24,9 @@ import com.qy.j4u.di.components.DaggerMainComponent;
 import com.qy.j4u.di.modules.MainModule;
 import com.qy.j4u.eventmessages.RaspberryIp;
 import com.qy.j4u.global.ForUApplication;
+import com.qy.j4u.lib.JLog;
 import com.qy.j4u.services.RemoteCoreService;
 import com.qy.j4u.utils.ARouterWrapper;
-import com.qy.j4u.utils.JLog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

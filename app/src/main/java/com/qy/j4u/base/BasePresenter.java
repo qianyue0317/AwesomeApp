@@ -1,7 +1,7 @@
 package com.qy.j4u.base;
 
+import com.qy.j4u.lib.JLog;
 import com.qy.j4u.model.http.ApiService;
-import com.qy.j4u.utils.JLog;
 import com.qy.j4u.utils.RxLifecycleUtils;
 import com.uber.autodispose.AutoDisposeConverter;
 

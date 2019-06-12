@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.qy.j4u.lib.JLog;
 import com.qy.j4u.services.CoreService;
-import com.qy.j4u.utils.JLog;
 
 public class ScreenStatusBroadcastReceiver extends BroadcastReceiver {
     @Override

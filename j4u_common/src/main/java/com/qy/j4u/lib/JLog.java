@@ -1,4 +1,4 @@
-package com.qy.j4u.utils;
+package com.qy.j4u.lib;
 
 
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -6,7 +6,6 @@ import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
-import com.qy.j4u.global.constants.Constants;
 
 /**
  * 此项目的log类
@@ -18,7 +17,16 @@ public class JLog {
     /**
      * 默认的tag
      */
-    private static final String TAG = "J4U";
+    private static String TAG = "J4U";
+    private static boolean LOG = true;
+
+    public static void setLog(boolean log) {
+        LOG = log;
+    }
+
+    public static void setTAG(String tag) {
+        TAG = tag;
+    }
 
     static {
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
@@ -32,37 +40,37 @@ public class JLog {
 
 
     public static void i(String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.i(content);
         }
     }
 
     public static void i(Object object) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.i(String.valueOf(object));
         }
     }
 
     public static void v(String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.v(content);
         }
     }
 
     public static void d(String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.d(content);
         }
     }
 
     public static void e(String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.e(content);
         }
     }
 
     public static void w(String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.w(content);
         }
     }
@@ -74,13 +82,13 @@ public class JLog {
      * @param json json字符串
      */
     public static void json(String json) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.json(json);
         }
     }
 
     public static void json(String tag, String json) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.t(tag).json(json);
         }
     }
@@ -89,31 +97,31 @@ public class JLog {
     // -----------------------以下是自己写tag的方法---------------------------
 
     public static void i(String tag, String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.t(tag).i(content);
         }
     }
 
     public static void v(String tag, String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.t(tag).v(content);
         }
     }
 
     public static void d(String tag, String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.t(tag).d(content);
         }
     }
 
     public static void e(String tag, String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.t(tag).e(content);
         }
     }
 
     public static void w(String tag, String content) {
-        if (Constants.LOG) {
+        if (LOG) {
             Logger.t(tag).w(content);
         }
     }

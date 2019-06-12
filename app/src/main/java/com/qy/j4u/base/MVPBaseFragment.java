@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+@SuppressWarnings("WeakerAccess")
 public abstract class MVPBaseFragment<P extends BasePresenter> extends BaseFragment {
 
     @Inject
@@ -24,4 +25,9 @@ public abstract class MVPBaseFragment<P extends BasePresenter> extends BaseFragm
         getLifecycle().addObserver(mPresenter);
         return view;
     }
+
+    public P getPresenter() {
+        return mPresenter;
+    }
+
 }

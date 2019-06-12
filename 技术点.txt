@@ -29,3 +29,5 @@ livedatabus
 mvvm
 
 视频播放 JiaoZiVideoPlayer
+
+位运算可以减少不必要的if

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.qy.j4u.eventmessages.RaspberryIp;
-import com.qy.j4u.utils.JLog;
+import com.qy.j4u.lib.JLog;
 
 import org.greenrobot.eventbus.EventBus;
 

@@ -12,9 +12,9 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.qy.j4u.di.components.DaggerNetComponent;
 import com.qy.j4u.di.components.NetComponent;
 import com.qy.j4u.global.constants.Constants;
+import com.qy.j4u.lib.JLog;
 import com.qy.j4u.pojo.DaoMaster;
 import com.qy.j4u.pojo.DaoSession;
-import com.qy.j4u.utils.JLog;
 
 import org.greenrobot.greendao.database.Database;
 import org.litepal.LitePal;

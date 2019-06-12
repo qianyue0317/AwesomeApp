@@ -1,6 +1,6 @@
 package com.qy.j4u.model.http;
 
-import com.qy.j4u.utils.JLog;
+import com.qy.j4u.lib.JLog;
 
 import java.io.EOFException;
 import java.io.IOException;

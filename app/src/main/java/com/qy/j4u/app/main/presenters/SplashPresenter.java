@@ -5,7 +5,6 @@ import com.qy.j4u.base.BasePresenter;
 import com.qy.j4u.global.User;
 import com.qy.j4u.model.http.ApiService;
 import com.qy.j4u.model.http.ObserverWrapper;
-import com.qy.j4u.utils.JLog;
 import com.qy.j4u.utils.ToastUtil;
 
 import javax.inject.Inject;

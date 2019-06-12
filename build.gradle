@@ -20,6 +20,8 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' //添加该依赖
         // 添加emas-services插件
         classpath 'com.aliyun.ams:emas-services:1.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
     }
 }
 
@@ -28,13 +30,33 @@ allprojects {
         jcenter()
         google()
         mavenCentral()
-        maven { url "https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository" }
-        maven { url 'https://jitpack.io'}
+        maven {
+            url "https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository"
+        }
+        maven { url 'https://jitpack.io' }
         maven {
             url "http://maven.aliyun.com/nexus/content/repositories/releases"
         }
         mavenCentral()
         maven { url "https://maven.google.com" }
+
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username 'HnMyyP'
+                password 'eWS55Hfveb'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/75651-release-3pbkYb/'
+        }
+        maven {
+            credentials {
+                username 'HnMyyP'
+                password 'eWS55Hfveb'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/75651-snapshot-i6UHwv/'
+        }
     }
 }
 
@@ -42,5 +64,5 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-apply from:'copyApk.gradle'
-apply from:'constants.gradle'
+apply from: 'copyApk.gradle'
+apply from: 'constants.gradle'
