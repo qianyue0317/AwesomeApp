@@ -145,7 +145,7 @@ public class J4UAnnotationProcessor extends AbstractProcessor {
             TypeSpec createdClass =
                     TypeSpec.classBuilder(enclosingElement.getSimpleName() +
                             "$$InstanceStateHolder").addModifiers(Modifier.PUBLIC,
-                            Modifier.FINAL).addSuperinterface(ClassName.get("com.j4u.j4uLib",
+                            Modifier.FINAL).addSuperinterface(ClassName.get("com.qy.j4u.j4uLib",
                             "InstanceStateInjectorInterface"))
                             .addMethod(restoreMethodBuilder.build())
                             .addMethod(saveMethodBuilder.build()).build();//指定生成的类

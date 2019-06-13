@@ -1,4 +1,4 @@
-package com.j4u.j4uLib;
+package com.qy.j4u.j4uLib;
 
 import android.os.Bundle;
 

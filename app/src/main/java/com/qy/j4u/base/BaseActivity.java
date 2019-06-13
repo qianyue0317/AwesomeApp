@@ -13,12 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.j4u.j4uLib.InstanceStateInjector;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.qy.j4u.R;
 import com.qy.j4u.app.main.activities.MainActivity;
 import com.qy.j4u.app.main.activities.SplashActivity;
 import com.qy.j4u.global.User;
+import com.qy.j4u.j4uLib.InstanceStateInjector;
 import com.qy.j4u.utils.KeyboardTool;
 import com.qy.j4u.utils.RxLifecycleUtils;
 import com.qy.j4u.widget.dialog.DefaultLoading;

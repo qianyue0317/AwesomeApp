@@ -38,6 +38,5 @@ afterEvaluate { project ->
         options.addStringOption('encoding', 'UTF-8')
         options.addStringOption('charSet', 'UTF-8')
     }
-    artifacts {
-    }
+
 }
