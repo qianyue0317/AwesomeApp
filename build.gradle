@@ -24,6 +24,13 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
     }
 }
+File repositoryInfoFile = file("repository_password.properties")
+Properties properties = new Properties()
+if (repositoryInfoFile.exists()) {
+    properties.load(repositoryInfoFile.newDataInputStream())
+}
+def nexus_username = properties.getProperty('NEXUS_USERNAME')
+def nexus_password = properties.getProperty('NEXUS_PASSWORD')
 
 allprojects {
     repositories {
@@ -45,15 +52,15 @@ allprojects {
         }
         maven {
             credentials {
-                username 'HnMyyP'
-                password 'eWS55Hfveb'
+                username nexus_username
+                password nexus_password
             }
             url 'https://repo.rdc.aliyun.com/repository/75651-release-3pbkYb/'
         }
         maven {
             credentials {
-                username 'HnMyyP'
-                password 'eWS55Hfveb'
+                username nexus_username
+                password nexus_password
             }
             url 'https://repo.rdc.aliyun.com/repository/75651-snapshot-i6UHwv/'
         }

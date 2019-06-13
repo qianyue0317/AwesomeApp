@@ -7,9 +7,10 @@ File localPropertiesFile = project.file("gradle.properties")
 if(localPropertiesFile.exists()){
     properties.load(localPropertiesFile.newDataInputStream())
 }
-File projectPropertiesFile = project.file("project.properties")
-if(projectPropertiesFile.exists()){
-    properties.load(projectPropertiesFile.newDataInputStream())
+File passwordFile = project.file("repository_password.properties")
+Properties passwordProperties = new Properties()
+if(passwordFile.exists()){
+    passwordProperties.load(passwordFile.newDataInputStream())
 }
 
 // read properties
@@ -25,8 +26,8 @@ def developerId = properties.getProperty("developer.id")
 def developerName = properties.getProperty("developer.name")
 def developerEmail = properties.getProperty("developer.email")
 
-def bintrayUser = properties.getProperty("bintray.user")
-def bintrayApikey = properties.getProperty("bintray.apikey")
+def bintrayUser = passwordProperties.getProperty("bintray.user")
+def bintrayApikey = passwordProperties.getProperty("bintray.apikey")
 
 def javadocName = properties.getProperty("javadoc.name")
 

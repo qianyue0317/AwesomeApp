@@ -3,12 +3,18 @@ apply plugin: 'maven'
 def isReleaseBuild() {
     return !VERSION_NAME.toUpperCase().contains("SNAPSHOT")
 }
-def getRepositoryUsername() {
-    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ""
+
+File repositoryInfoFile = rootProject.file("repository_password.properties")
+Properties properties = new Properties()
+if (repositoryInfoFile.exists()) {
+    properties.load(repositoryInfoFile.newDataInputStream())
 }
-def getRepositoryPassword() {
-    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
-}
+def nexus_username = properties.getProperty('NEXUS_USERNAME')
+def nexus_password = properties.getProperty('NEXUS_PASSWORD')
+
+println("nexusName:${nexus_username}")
+println("nexusPassword:${nexus_password}")
+
 def getRepositoryUrl() {
     return isReleaseBuild() ? RELEASE_REPOSITORY_URL : SNAPSHOT_REPOSITORY_URL
 }
@@ -20,23 +26,10 @@ afterEvaluate { project ->
                 pom.artifactId = POM_ARTIFACT_ID
                 pom.version = VERSION_NAME
                 repository(url: getRepositoryUrl()) {
-                    authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+                    authentication(userName: nexus_username, password: nexus_password)
                 }
             }
         }
-    }
-    task androidJavadocs(type: Javadoc) {
-        failOnError false
-        source = android.sourceSets.main.java.srcDirs
-        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    }
-    task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-        classifier = 'javadoc'
-        from androidJavadocs.destinationDir
-    }
-    task androidSourcesJar(type: Jar) {
-        classifier = 'sources'
-        from android.sourceSets.main.java.sourceFiles
     }
 
     //解决 JavaDoc 中文注释生成失败的问题
@@ -46,7 +39,5 @@ afterEvaluate { project ->
         options.addStringOption('charSet', 'UTF-8')
     }
     artifacts {
-        archives androidSourcesJar
-        archives androidJavadocsJar
     }
 }

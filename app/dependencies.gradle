@@ -13,9 +13,8 @@ dependencies {
     implementation 'com.qy.j4u:j4u_common:1.0.1'
     implementation 'com.qy.j4u:j4u-annotations:1.0.0'
     implementation 'com.qy.j4u:j4ulib:1.0.0'
-//    annotationProcessor "com.qy.j4u:j4u-compiler:1.0.0"
-    kapt "com.qy.j4u:j4u-compiler:1.0.1"
-//    kapt project(path: ':j4u-compiler')
+    kapt "com.qy.j4u:j4u-compiler:1.0.0"
+
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
@@ -123,7 +122,6 @@ dependencies {
 
     //ArcGis For Android工具库（API：100.1以上版本）
     //implementation "com.github.vondear.RxTool:RxArcGisKit:2.3.9"
-
 
     //For Lifecycles, LiveData, and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'

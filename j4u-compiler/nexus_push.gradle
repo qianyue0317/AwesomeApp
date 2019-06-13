@@ -3,12 +3,18 @@ apply plugin: 'maven'
 def isReleaseBuild() {
     return VERSION_NAME.toUpperCase().contains("SNAPSHOT") == false
 }
-def getRepositoryUsername() {
-    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ""
+
+File repositoryInfoFile = rootProject.file("repository_password.properties")
+Properties properties = new Properties()
+if (repositoryInfoFile.exists()) {
+    properties.load(repositoryInfoFile.newDataInputStream())
 }
-def getRepositoryPassword() {
-    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
-}
+def nexus_username = properties.getProperty('NEXUS_USERNAME')
+def nexus_password = properties.getProperty('NEXUS_PASSWORD')
+
+println("nexusName:${nexus_username}")
+println("nexusPassword:${nexus_password}")
+
 def getRepositoryUrl() {
     return isReleaseBuild() ? RELEASE_REPOSITORY_URL : SNAPSHOT_REPOSITORY_URL
 }
@@ -20,7 +26,7 @@ afterEvaluate { project ->
                 pom.artifactId = POM_ARTIFACT_ID
                 pom.version = VERSION_NAME
                 repository(url: getRepositoryUrl()) {
-                    authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+                    authentication(userName: nexus_username, password: nexus_password)
                 }
             }
         }
