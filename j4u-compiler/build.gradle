@@ -4,8 +4,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // 动态生成java代码的库
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation 'com.squareup:javapoet:1.11.1'
-    implementation 'com.qy.j4u:j4u-annotations:1.0.0'
+    compileOnly 'com.squareup:javapoet:1.11.1'
+    compileOnly 'com.qy.j4u:j4u-annotations:1.0.0'
 }
 
 sourceCompatibility = "7"

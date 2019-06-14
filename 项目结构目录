@@ -1,5 +1,5 @@
 main-
-    -app    按模块划分项目主体部分,模块中包含M V P 其中V P用契约接口关联
+    -app    按模块划分项目主体部分,模块中包含M V P 此项目中V采用Activity(Fragment)内部类的形式
     -animate    动画工具包
     -base   各种基类的包
         -BaseActivity 所有Activity的基类

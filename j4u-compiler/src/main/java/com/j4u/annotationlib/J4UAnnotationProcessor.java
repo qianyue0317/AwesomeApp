@@ -180,7 +180,7 @@ public class J4UAnnotationProcessor extends AbstractProcessor {
         } else if ("short".equals(s)) {
             return "Short";
         } else {
-            throw new RuntimeException("暂时不支持其他类型");
+            throw new RuntimeException("Other types are not supported util now!");
         }
     }
 
