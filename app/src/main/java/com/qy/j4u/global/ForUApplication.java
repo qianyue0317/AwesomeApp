@@ -22,6 +22,8 @@ import org.litepal.LitePal;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
 import es.dmoral.toasty.Toasty;
@@ -36,6 +38,7 @@ public class ForUApplication extends Application {
     private static ForUApplication sInstance;
     private DaoSession mDaoSession;
     private NetComponent mNetComponent;
+    private List<Activity> mActivities;
 
     static {
         System.loadLibrary("native-lib");
@@ -53,6 +56,7 @@ public class ForUApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initVariables();
         initHookActivityThreadHandler();
         sInstance = this;
         initUser();
@@ -66,6 +70,32 @@ public class ForUApplication extends Application {
         initToasty();
     }
 
+    private void initVariables() {
+        mActivities = new ArrayList<>();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (level == TRIM_MEMORY_MODERATE) {
+            destroyAllData();
+        }
+    }
+
+    /**
+     * 结束掉所有Activity;监听到系统内存不足,此应用即将被回收的时候,调用
+     */
+    private void destroyAllData() {
+        if (mActivities != null) {
+            int size = mActivities.size();
+            for (int i = 0; i < size; i++) {
+                Activity activity = mActivities.get(i);
+                if (!activity.isFinishing()) {
+                    activity.finish();
+                }
+            }
+        }
+    }
 
     private void initHookActivityThreadHandler() {
         try {
