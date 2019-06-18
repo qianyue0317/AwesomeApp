@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 适配器基类
+ * ListView适配器基类
  * Created by abc on 2016/11/2.
  */
-
+@SuppressWarnings("all")
 public abstract class ForUAdapter<T> extends BaseAdapter {
 
     protected List<T> data;
@@ -31,8 +31,6 @@ public abstract class ForUAdapter<T> extends BaseAdapter {
 
     /**
      * 更新数据
-     *
-     * @param data
      */
     public void updateData(List<T> data) {
         if (data != null) {
@@ -45,8 +43,6 @@ public abstract class ForUAdapter<T> extends BaseAdapter {
 
     /**
      * 添加数据
-     *
-     * @param data
      */
     public void addData(List<T> data) {
         if (data != null) {

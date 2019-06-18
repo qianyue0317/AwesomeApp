@@ -41,9 +41,6 @@ public class SplashActivity extends BaseActivity implements Handler.Callback {
             JLog.d("MainActivity", "onCreate intent flag FLAG_ACTIVITY_BROUGHT_TO_FRONT");
             finish();
         }
-        JLog.i("-----------------------");
-        new Test();
-        JLog.i("-----------------------");
 //        startService(new Intent(this, KeepService.class));
     }
 

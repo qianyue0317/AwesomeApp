@@ -9,7 +9,7 @@ class MyInject {
     private static ClassPool pool = ClassPool.getDefault()
     private static String injectStr = "System.out.println(\"I Love QianYue\"+getClass().getSimpleName()); "
 
-    public static void injectDir(String path, String packageName) {
+    static void injectDir(String path, String packageName) {
         pool.appendClassPath(path)
         File dir = new File(path)
         if (dir.isDirectory()) {
