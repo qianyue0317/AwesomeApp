@@ -104,7 +104,7 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
         });
         mNavigationBar
                 .addItem(new BottomNavigationItem(R.mipmap.code, "IT"))
-                .addItem(new BottomNavigationItem(R.mipmap.hardware, "树莓派"))
+                .addItem(new BottomNavigationItem(R.mipmap.hardware, "LeetCode"))
                 .addItem(new BottomNavigationItem(R.mipmap.mine, "我的"))
                 .setFirstSelectedPosition(0)
                 .initialise();

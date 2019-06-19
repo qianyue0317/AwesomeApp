@@ -14,12 +14,10 @@ import com.alibaba.android.arouter.facade.template.IInterceptor;
 public class ARouterInterceptor implements IInterceptor {
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {
-//        JLog.i("postcard:" + postcard);
         callback.onContinue(postcard);
     }
 
     @Override
     public void init(Context context) {
-//        JLog.i("init");
     }
 }
