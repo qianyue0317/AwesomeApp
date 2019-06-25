@@ -4,7 +4,7 @@ import com.android.build.api.transform.*
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
-import com.qianyue.util.MyInject
+import com.qianyue.transform.MyInject
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -67,7 +67,8 @@ class QYPlugin implements Plugin<Project> {
                 //对类型为“文件夹”的input进行遍历
                 input.directoryInputs.each { DirectoryInput directoryInput ->
                     //文件夹里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-                    MyInject.injectDir(directoryInput.file.absolutePath,"com\\qy\\j4u")
+//                    MyInject.injectDir(directoryInput.file.absolutePath,"com\\qy\\j4u")
+                    MyInject.processAndroidPackage(directoryInput.file.absolutePath,"android\\app")
 
                     // 获取output目录
                     def dest = outputProvider.getContentLocation(directoryInput.name,

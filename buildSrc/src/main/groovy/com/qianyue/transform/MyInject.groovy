@@ -1,4 +1,4 @@
-package com.qianyue.util
+package com.qianyue.transform
 
 import javassist.ClassPool
 import javassist.CtClass
@@ -54,5 +54,32 @@ class MyInject {
             }
         }
     }
+
+
+    static void processAndroidPackage(String path, String packageName) {
+        pool.appendClassPath(path)
+        File dir = new File(path)
+        if (dir.isDirectory()) {
+            dir.eachFileRecurse { File file ->
+
+                String filePath = file.absolutePath
+                if (filePath.indexOf("android") > 0) {
+                    println("------------$filePath")
+                }
+                //确保当前文件是class文件，并且不是系统自动生成的class文件
+                if (filePath.endsWith(".class")
+                        && !filePath.contains('R$')
+                        && !filePath.contains('R.class')
+                        && !filePath.contains("BuildConfig.class")) {
+                    // 判断当前目录是否是在我们的应用包里面
+                    int index = filePath.indexOf(packageName)
+                    boolean isMyPackage = index != -1
+                    if (isMyPackage) {
+                    }
+                }
+            }
+        }
+    }
+
 
 }
