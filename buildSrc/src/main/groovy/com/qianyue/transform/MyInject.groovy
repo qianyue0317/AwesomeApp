@@ -63,6 +63,10 @@ class MyInject {
             dir.eachFileRecurse { File file ->
 
                 String filePath = file.absolutePath
+                if (file.isDirectory()) {
+                    processAndroidPackage(filePath, packageName)
+                    return
+                }
                 if (filePath.indexOf("android") > 0) {
                     println("------------$filePath")
                 }

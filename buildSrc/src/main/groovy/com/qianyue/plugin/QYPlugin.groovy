@@ -7,25 +7,15 @@ import com.android.utils.FileUtils
 import com.qianyue.transform.MyInject
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.Task
 
 class QYPlugin implements Plugin<Project> {
 
+
+
+
+
     @Override
     void apply(Project project) {
-        Task helloAssemble = project.tasks.create('helloassemble')
-        helloAssemble.doFirst {
-            println('hello assemble')
-        }
-        project.getAllTasks(true).each { Project var1, Set<Task> var2 ->
-            var2.each { Task task ->
-                println("${var1.name}的task:${task.name}")
-            }
-            Task assemble = var1.tasks.getByName("assemble")
-            assemble.doLast {
-                println('assemble执行完毕')
-            }
-        }
         AppExtension android = project.extensions.getByType(AppExtension)
         android.registerTransform(new MyTransform(project))
     }
@@ -67,8 +57,8 @@ class QYPlugin implements Plugin<Project> {
                 //对类型为“文件夹”的input进行遍历
                 input.directoryInputs.each { DirectoryInput directoryInput ->
                     //文件夹里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-//                    MyInject.injectDir(directoryInput.file.absolutePath,"com\\qy\\j4u")
-                    MyInject.processAndroidPackage(directoryInput.file.absolutePath,"android\\app")
+                    MyInject.injectDir(directoryInput.file.absolutePath,"com\\qy\\j4u")
+//                    MyInject.processAndroidPackage(directoryInput.file.absolutePath,"android")
 
                     // 获取output目录
                     def dest = outputProvider.getContentLocation(directoryInput.name,
