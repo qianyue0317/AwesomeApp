@@ -87,12 +87,12 @@
             android:name=".app.main.activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <action android:name="android.intent.action.VIEW"/>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+<!--                <action android:name="android.intent.action.VIEW"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".app.main.activities.HooliganActivity"
@@ -190,6 +190,15 @@
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="com.qy.j4u"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".app.pccontroller.CoapControlActivity"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity> <!-- Required SDK 核心功能 -->
         <service
