@@ -53,13 +53,13 @@
 
     <application
         android:name=".global.SophixStubApplication"
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:icon="@mipmap/laucher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:allowBackup"
+        tools:replace="android:allowBackup,android:icon"
         tools:targetApi="n">
         <service
             android:name=".services.KeepService"
@@ -211,6 +211,8 @@
             android:process="com.qy.core"/>
         <service
             android:name=".services.CoreService"
+            android:exported="false"/>
+        <service android:name=".iot.IOTConnectService"
             android:exported="false"/> <!-- Required SDK 核心功能 -->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver"/> <!-- Required since 3.0.7 -->
         <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->

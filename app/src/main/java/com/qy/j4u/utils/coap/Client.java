@@ -16,8 +16,17 @@ import java.util.concurrent.Executors;
 public class Client {
 
     private CoapClient mClient;
-    private ExecutorService mExecutor;
-    private Handler mHandler;
+    private static ExecutorService mExecutor;
+    private static Handler mHandler;
+
+    public Client() {
+        mClient = new CoapClient();
+    }
+
+    static {
+        mExecutor = Executors.newFixedThreadPool(5);
+        mHandler = new Handler(Looper.getMainLooper());
+    }
 
     public interface Callback{
         void onResponse(CoapResponse response);
@@ -25,19 +34,6 @@ public class Client {
         void onError(Exception e);
     }
 
-    private Client() {
-        mClient = new CoapClient();
-        mExecutor = Executors.newFixedThreadPool(5);
-        mHandler = new Handler(Looper.getMainLooper());
-    }
-
-    private static class InsHolder {
-        private static Client ins = new Client();
-    }
-
-    public static Client getIns() {
-        return InsHolder.ins;
-    }
 
     public void setUri(String uri) {
         if (mClient != null) {
@@ -47,30 +43,18 @@ public class Client {
 
     public void get(final Callback callback) {
         if (mClient != null) {
-            mExecutor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-
-                        final CoapResponse coapResponse = mClient.get();
-                        if (callback != null) {
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    callback.onResponse(coapResponse);
-                                }
-                            });
-                        }
-                    } catch (final Exception e) {
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (callback != null) {
-                                    callback.onError(e);
-                                }
-                            }
-                        });
+            mExecutor.execute(() -> {
+                try {
+                    final CoapResponse coapResponse = mClient.get();
+                    if (callback != null) {
+                        mHandler.post(() -> callback.onResponse(coapResponse));
                     }
+                } catch (final Exception e) {
+                    mHandler.post(() -> {
+                        if (callback != null) {
+                            callback.onError(e);
+                        }
+                    });
                 }
             });
         }

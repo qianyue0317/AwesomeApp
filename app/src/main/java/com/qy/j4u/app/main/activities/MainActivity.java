@@ -94,7 +94,7 @@ public class MainActivity extends MVPBaseActivity<MainPresenter> {
 
             @Override
             public void onTabUnselected(int position) {
-
+                int a = 1;
             }
 
             @Override

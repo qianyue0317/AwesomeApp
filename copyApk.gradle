@@ -1,29 +1,29 @@
-println "根工程的绝对路径:${getRootDir().absolutePath}"
-project('app') { Project project ->
-
-//    SimpleDateFormat sdf = SimpleDateFormat.getDateInstance()
-//    sdf.applyPattern("yyyyMMddHHmmss")
+//println "根工程的绝对路径:${getRootDir().absolutePath}"
+//project('app') { Project project ->
 //
-//    project.copy {
-//        from file('build/outputs/apk/debug/app-release.apk')
-//        into project.projectDir.path + '/apk/'
-//        rename {
-//            sdf.format(new Date(file('build/outputs/apk/debug/app-debug.apk').lastModified()))+'.apk'
-//        }
+////    SimpleDateFormat sdf = SimpleDateFormat.getDateInstance()
+////    sdf.applyPattern("yyyyMMddHHmmss")
+////
+////    project.copy {
+////        from file('build/outputs/apk/debug/app-release.apk')
+////        into project.projectDir.path + '/apk/'
+////        rename {
+////            sdf.format(new Date(file('build/outputs/apk/debug/app-debug.apk').lastModified()))+'.apk'
+////        }
+////    }
+//    def tasks = project.getAllTasks(false)
+//    tasks.each {it1,it2->
+//        println "$it1"
+//        println "$it2"
 //    }
-    def tasks = project.getAllTasks(false)
-    tasks.each {it1,it2->
-        println "$it1"
-        println "$it2"
-    }
-
-}
-
-task copyAPK{
-    doLast {
-        println "copyAPK"
-    }
-}
-
+//
+//}
+//
+//task copyAPK{
+//    doLast {
+//        println "copyAPK"
+//    }
+//}
+//
 
 

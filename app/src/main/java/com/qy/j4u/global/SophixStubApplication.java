@@ -39,6 +39,7 @@ public class SophixStubApplication extends SophixApplication {
 //         如果需要使用MultiDex，需要在此处调用。
         MultiDex.install(this);
         initSophix();
+        Log.i("application", "initIOT: ");
     }
 
     @Override

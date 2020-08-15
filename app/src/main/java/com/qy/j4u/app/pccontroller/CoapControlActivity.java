@@ -20,10 +20,11 @@ public class CoapControlActivity extends AppCompatActivity implements Client.Cal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coap);
         findViewById(R.id.btn).setOnClickListener(v -> {
-            Client client = Client.getIns();
-            client.setUri("192.168.1.104:5683/basic");
+            Client client = new Client();
+            client.setUri("192.168.1.104:5683/mute");
             client.get(CoapControlActivity.this);
         });
+        Log.i(TAG, "onCreate: ");
     }
 
     @Override

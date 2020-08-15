@@ -4,17 +4,18 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.qy.j4u.di.components.DaggerNetComponent;
 import com.qy.j4u.di.components.NetComponent;
 import com.qy.j4u.global.constants.Constants;
+import com.qy.j4u.iot.IOTConnectService;
 import com.qy.j4u.lib.JLog;
-import com.qy.j4u.pojo.DaoMaster;
-import com.qy.j4u.pojo.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
 import org.litepal.LitePal;
@@ -36,7 +37,6 @@ import es.dmoral.toasty.Toasty;
 public class ForUApplication extends Application {
 
     private static ForUApplication sInstance;
-    private DaoSession mDaoSession;
     private NetComponent mNetComponent;
     private List<Activity> mActivities;
 
@@ -56,6 +56,8 @@ public class ForUApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        initIOT();
         initVariables();
         initHookActivityThreadHandler();
         sInstance = this;
@@ -66,8 +68,12 @@ public class ForUApplication extends Application {
         startCoreService();
         initJPush();
         initLitePal();
-        initGreenDao();
         initToasty();
+    }
+
+    private void initIOT() {
+        startService(new Intent(this, IOTConnectService.class));
+        JLog.i("application","启动iot");
     }
 
     private void initVariables() {
@@ -212,15 +218,6 @@ public class ForUApplication extends Application {
     private void startCoreService() {
     }
 
-    private void initGreenDao() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "notes-db");
-        Database db = helper.getWritableDb();
-        mDaoSession = new DaoMaster(db).newSession();
-    }
-
-    public DaoSession getGreenDaoSession() {
-        return mDaoSession;
-    }
 
     private void initJPush() {
         JPushInterface.setDebugMode(true);

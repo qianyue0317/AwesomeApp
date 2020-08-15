@@ -132,4 +132,7 @@ dependencies {
     // guava
     implementation 'com.google.guava:guava:27.1-android'
     implementation "androidx.multidex:multidex:2.0.1"
+
+    // 阿里云物联网平台
+    implementation('com.aliyun.alink.linksdk:iot-linkkit:1.6.6')
 }
