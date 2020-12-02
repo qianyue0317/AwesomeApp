@@ -11,16 +11,12 @@ import com.qy.j4u.global.User;
 import com.qy.j4u.global.constants.TransferKeys;
 import com.qy.j4u.model.entity.ITCategoryItem;
 import com.qy.j4u.utils.ARouterWrapper;
-import com.qy.j4u.widget.views.SlideRecyclerView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
+
 
 public class ITCategoryFragment extends BaseFragment {
-
-    @BindView(R.id.recycler_view)
-    SlideRecyclerView mRecyclerView;
 
 
     public static ITCategoryFragment newInstance() {
@@ -42,7 +38,7 @@ public class ITCategoryFragment extends BaseFragment {
     protected void initView(View view) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity,
                 RecyclerView.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
+
     }
 
     @Override
@@ -60,7 +56,7 @@ public class ITCategoryFragment extends BaseFragment {
                         helper.setText(R.id.tv_item_desc, item.getName());
                     }
                 };
-        mRecyclerView.setAdapter(adapter);
+
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
