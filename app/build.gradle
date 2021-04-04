@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
+//apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.aliyun.ams.emas-services'
+//apply plugin: 'com.aliyun.ams.emas-services'
 kapt {
     generateStubs = true
     arguments {
