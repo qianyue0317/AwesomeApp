@@ -67,7 +67,6 @@
         android:gravity="center"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:text="@string/delete"
         android:textColor="#FFFFFFFF"
         android:textSize="14sp" />
 </LinearLayout>

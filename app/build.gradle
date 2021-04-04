@@ -3,7 +3,6 @@ apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'com.qianyue.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.aliyun.ams.emas-services'
 kapt {

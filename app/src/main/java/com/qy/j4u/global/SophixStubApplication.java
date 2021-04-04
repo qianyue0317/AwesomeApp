@@ -6,7 +6,6 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.annotation.Keep;
-import androidx.multidex.MultiDex;
 
 import android.util.Log;
 
@@ -37,7 +36,6 @@ public class SophixStubApplication extends SophixApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
 //         如果需要使用MultiDex，需要在此处调用。
-        MultiDex.install(this);
         initSophix();
         Log.i("application", "initIOT: ");
     }

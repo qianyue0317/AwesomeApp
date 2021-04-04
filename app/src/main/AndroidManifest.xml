@@ -95,14 +95,6 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".app.main.activities.HooliganActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:finishOnTaskLaunch="false"
-            android:launchMode="singleInstance"
-            android:theme="@style/HooliganActivityStyle"/>
-        <activity
             android:name=".app.main.activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity

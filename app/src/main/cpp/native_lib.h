@@ -20,3 +20,5 @@
 
 
 #endif //SERVICEALIVETEST_NATIVE_LIB_H
+
+void testsss();

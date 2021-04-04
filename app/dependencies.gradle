@@ -40,7 +40,6 @@ dependencies {
     //Optional compile for GCM (Google Cloud Messaging).
     implementation 'com.google.android.gms:play-services-gcm:11.4.0'
     implementation 'com.hyphenate:hyphenate-sdk:3.5.5'
-    implementation project(':easeui')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'cn.jiguang.sdk:jpush:3.2.0'
